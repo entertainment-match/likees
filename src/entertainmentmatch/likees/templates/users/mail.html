@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title></title>
+    </head>
+    <body style="font-family: Arial, Serif; font-size: 14px; line-height: 200%;">
+        {% load i18n %}
+        <div class="container" style="padding: 10px; border: 1px solid #888; background-color: #e3f0f4; -moz-border-radius: 3px; border-radius: 3px;">
+            <img src="{{ TEMPLATE_DOMAIN }}/static/img/logo.png"/>
+
+            {% block content %}{% endblock %}
+            
+            <p><b>Likees Team. 2011</b></p>
+        </div>
+    </body>
+</html>

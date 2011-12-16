@@ -1,0 +1,68 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {{person.name}}{% endblock %}
+
+{% block metas %}
+    <meta property="og:title" content="{{ person.name }}" />
+    
+    <meta property="og:type" content="actor" />
+    <meta property="og:url" content="{{TEMPLATE_DOMAIN}}person/{{ person.id }}/title/{{person.normalized_name}}/" />
+    <meta property="og:site_name" content="Likees" />
+    {% if person.image %}<meta property="og:image" content="{{COVER_DOMAIN}}{{person.image.url}}" />{% endif %}
+    
+    <meta property="fb:admins" content="650691227,649253967" />
+{% endblock %}
+
+{% block content %}
+<div>
+    <div id="submenu">
+        <ul id="subnavi">
+            <li><a {% if section = 'catalog'%}class="current"{% endif %}href="/movies/">{% trans "Catalog" %}</a></li>
+            {% if user.is_authenticated %}
+            <li><a {% if section = 'wishlist'%}class="current"{% endif %}  href="/wishlist/">{% trans "I want to watch" %}</a></li>
+            <li><a {% if section = 'recommendations'%}class="current"{% endif %}  href="/recommendations/">{% trans "Recommendations" %}</a></li>
+            {% endif %}
+            {% if user.is_staff %}
+            <li style="font-weight: bold; float: right"><a {% if section = 'admin'%}class="current"{% endif %}  href="/movies/admin/">{% trans "Administration" %}</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+</div>
+
+<div id="bread">
+    {% include "breadcrumb.html"%}
+</div>
+
+<div class="maindatacontainer">
+
+    <h1>{{ person.name }}</h1>
+
+    {% if person.image %}
+    <img class="poster" style="height: 150px; width:100px;" alt="{{ person.image.name }}" src="{{COVER_DOMAIN}}{{person.image.url}}"/> 
+    {% endif %}
+
+        <div style="text-align:right; overflow:hidden">
+            <div class="facebook_btn" style="float: right; height: 24px; margin-top: 0px;">
+                <iframe src="http://www.facebook.com/plugins/like.php?href={{TEMPLATE_DOMAIN|iriencode}}person/{{person.id}}/title/{{person.normalized_name}}/&amp;layout=button_count&amp;show_faces=true&ampwhile(idth=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></div>
+            <div class="twitter_btn" style="float: right; height: 24px; margin-right: 10px; margin-bottom: 5px;"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="likees_es" data-lang="es">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+        </div>
+
+    <div class="tablemoviesfull">
+        <h3>{% trans 'Star in'%}:</h3>
+        {% for item in movies.object_list %}
+        {% include "items/row-item.html"%}
+        {% endfor %}
+
+        {% with movies as list %}
+        {% with paginatorcontext as context %}
+        {% include "paginator.html"%}
+        {% endwith %}
+        {% endwith %}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "dashboard-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Dashboard" %}{% endblock %}
+
+{% block section %}
+
+<div id="add">
+    <h2>{% trans 'Add a new friend'%}</h2>
+    <form action="/user/search/" method="post">
+        {% csrf_token %}
+        <input type="text" name="username_search"/>
+        <input type="submit" value="{% trans 'Search'%}"/>
+    </form>
+    <div>
+		{% if results|length == 0 %}
+		<div class="infobox">
+		    <p>{% trans 'Sorry, we did not found anything' %} </p>
+		</div>
+		{% else %}
+        <ul class="userlist">
+            {% for ouser in results %}
+            {% ifnotequal ouser.id user.id %}
+            <li>
+            {% include "users/mini-lastest-user.html"%}
+            </li>
+            {% endifnotequal %}
+            {% empty %}
+            <li><span class="empty">{% trans 'Empty' %}</span></li>
+            {% endfor %}
+        </ul>
+		{% endif %}
+    </div>
+    <hr/>
+</div>
+
+<div style="float:left; width: 100%">
+    <h2>{% trans 'Your friends'%}</h2>
+    
+    {% if friends.items %}
+
+    <ul class="userlist">
+        {% for key, friend in friends.items %}
+        <li>
+        {% with friend as ouser %}{% include "users/mini-lastest-user.html"%}{% endwith %}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    {% else %}
+        <div class="infobox">{% trans 'In this section you will find all your friends once you have added any'%}</div>
+    {% endif %}
+</div>
+
+
+<!-- TODO
+<div style="float:right; width: 49%">
+    <h2>{% trans 'Your friends'%} (Under Construction!)</h2>
+    
+    {% if friends.items %}
+
+    <ul class="userlist">
+        {% for key, friend in friends.items %}
+        <li>
+        {% with friend as ouser %}{% include "users/mini-lastest-user.html"%}{% endwith %}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    {% else %}
+        <div class="infobox">{% trans 'In this section you will find all your friends once you have added any'%}</div>
+    {% endif %}
+</div>
+-->
+
+{% endblock %}
+

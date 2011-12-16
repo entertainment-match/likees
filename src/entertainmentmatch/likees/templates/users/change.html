@@ -1,0 +1,67 @@
+{% extends "main-layout.html" %}
+
+{% block content %}
+
+{% load i18n %}
+
+<div style="text-align:center;width: 400px; border: 1px solid #ccc; border-radius: 5px; margin: 10px auto; padding: 20px; background-color: #white;">
+
+    {% if form.errors %}
+    <div class="infobox">
+    <ol>
+        {% for field in form %} 
+        <li>{{ field.errors }} </li>
+        {% endfor %} 
+    </ol>
+    </div>
+    {% endif %}
+
+    <form id="formchange" method="post" action="{% url likees.views.views.change_password %}">
+        {% csrf_token %}
+
+        <table style="font-size: 1.2em;">
+            <!--
+            <tr>
+                <td><label for="id_password_old">{% trans 'Old password' %}</label></td>
+                <td>
+                    <input type="password" name="password_old" value="" id="id_password_old">
+                </td>
+            </tr>
+            -->
+            <tr>
+                <td><label for="id_password_new">{% trans 'New password' %}</label></td>
+                <td>
+                    <input type="password" name="password_new" value="" id="id_password_new">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="id_password_confirm">{% trans 'Confirm password' %}</label></td>
+                <td>
+                    <input type="password" name="password_confirm" value="" id="id_password_confirm">
+                </td>
+            </tr>
+        </table>
+
+        <input class="stdbutton default" type="submit" value="{% trans 'Modify password'%}" />
+        <input type="hidden" name="next" value="{{ next }}" />
+        <a class="stdbutton" href="/accounts/profile/">{% trans 'Back to profile'%}</a>
+    </form>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#formchange").submit(function(){
+                var pnew = $("#id_password_new").val();
+                var pconfirm = $("#id_password_confirm").val();
+                if (pnew != pconfirm){
+                    alert('{% trans 'Passwords must match!' %}');
+                    return false;
+                }
+                return true;
+            });  
+        });
+    </script>
+
+</div>
+
+{% endblock %}
+

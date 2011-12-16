@@ -1,0 +1,15 @@
+{% extends "items/row-item.html" %}
+
+{% load likeestags %}
+
+{% load i18n %}
+
+{% block actions %}
+<div class="stdhtoolbar">
+    {% if 'ignore' in tags|lookup:item.id %}    
+    <a class="stdbutton ignore-fade-action swapon" href="/item/{{item.id}}/ignore/delete/"><img src="/static/img/snow/Stop.png"/><span>{% trans 'Stop ignoring' %}</span></a>
+    {%else%}
+    <a class="stdbutton ignore-fade-action" href="/item/{{item.id}}/ignore/add/"><img src="/static/img/snow/Stop.png"/><span>{% trans 'Ignore' %}</span></a>
+    {% endif %}
+</div>
+{% endblock %}

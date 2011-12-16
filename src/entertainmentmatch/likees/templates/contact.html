@@ -1,0 +1,78 @@
+{% extends "main-lightbox-layout.html" %}
+
+{% load i18n %}
+
+{% load likeestags %}
+
+{% block content %}
+
+<h2>{% trans 'Contact us'%}</h2>
+
+<div id="contactinfo" class="infobox"> </div>
+
+<form id="contactform" action="/contact/" method="post">
+    <dl>
+        <dt>{% trans 'Name'%}:</dt>
+        <dd>
+            <input type="text" name="name"/>
+        </dd>
+        
+        <dt>{% trans 'E-mail'%}:</dt>
+        <dd>
+            <input type="text" name="mail"/>
+        </dd>
+        
+        <dt>{% trans 'Type'%}:</dt>
+        <dd>
+            <select name="type">
+                <option value="query">{% trans 'Query'%}</option>
+                <option value="bug">{% trans 'Bug'%}</option>
+                <option value="other">{% trans 'Other'%}</option>
+            </select>
+        </dd>
+        
+        <dt>{% trans 'Description'%}:</dt>
+        <dd>
+            <textarea name="query" style="width: 350px; height: 90px;"></textarea>
+        </dd>
+        <div class="stdhrtoolbar">
+            <a href="#" id="btncancel" class="stdbutton">{% trans 'Cancel'%}</a>
+            <a href="#" id="btnaccept" class="stdbutton default">{% trans 'Send'%}</a>
+        </div>
+</form>
+    
+<script type="text/javascript">
+
+    function showResponse (responseText, statusText, xhr, $form)  {
+        if (responseText.result == 'ko') {
+            $("#contactinfo").html(responseText.msg); 
+            $("#contactinfo").show(); 
+            $.colorbox.resize();
+        } else {
+            window.location.reload();
+        }
+    }
+    $(document).ready(function(){        
+            
+    $("#contactinfo").hide(); 
+        
+    var options = { success: showResponse, dataType: 'json' }; 
+    
+    $("#contactform").ajaxForm(options);
+    $("#btnaccept").click(function(){
+        $("#contactinfo").hide(); 
+        $("#contactform").submit();
+    });        
+    $("#btncancel").click(function(){
+        $.fn.colorbox.close()
+    });        
+    $('.lightboxbody').load(function() {
+        $.colorbox.resize();
+    });
+    $.colorbox.resize();
+    
+    });
+
+</script>
+
+{% endblock %}

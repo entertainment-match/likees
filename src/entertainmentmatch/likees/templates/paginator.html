@@ -1,0 +1,38 @@
+{% load i18n %}
+{% spaceless %}
+        <div class="pagination">
+            {% if list.has_previous %}
+            <a href="{{context}}?page=1{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{key}}={{value}}{% endifnotequal %}{% endfor %}">{% trans 'First'%}</a>
+            -
+            <a href="{{context}}?page={{ list.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{key}}={{value}}{% endifnotequal %}{% endfor %}">{% trans 'Previous'%}</a>
+            -
+            {% endif %}
+
+            <span class="current">
+                {% blocktrans with list.number as number and list.paginator.num_pages as num_pages %}
+                Page {{ number }} of {{ num_pages }}
+                {% endblocktrans %}
+            </span>
+
+            {% if list.has_next %}
+            -
+            <a href="{{context}}?page={{ list.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{key}}={{value}}{% endifnotequal %}{% endfor %}">{% trans 'Next'%}</a>
+            -
+            <a href="{{context}}?page={{ list.paginator.num_pages }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{key}}={{value}}{% endifnotequal %}{% endfor %}">{% trans 'Last'%}</a>
+            {% endif %}
+            
+            <span style="margin-left: 15px;">{% trans 'Go to page'%}:</span>
+            <form class="selpage" method="get" action="{{context}}">
+                {% for key,value in request.GET.items %}
+                {% ifnotequal key 'page' %}
+                <input type="hidden" name="{{key}}" value="{{value}}"/>
+                {% endifnotequal %}
+                {% endfor %} 
+                <select name="page" class="expandpaginator">
+                    <option value="{{list.paginator.num_pages}}">{{list.number}}</option>
+                </select>
+            </form>
+
+        </div>
+{% endspaceless %}
+

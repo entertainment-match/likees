@@ -1,0 +1,30 @@
+{% load likeestags %}
+{% spaceless %}
+{% load i18n %}
+<div class="rowitem fadeignoreitem{% if section == 'wishlist'%} fadewishitem{% endif %}">
+    <a class="itemposter" href="/item/{{ item.id }}/title/{{item.normalized_name}}/">
+        <img class="poster" style="height: 60px; width: 40px;" alt="{{ item.name }}" src="{% if item.thumb %}{{COVER_DOMAIN}}{{item.thumb.url}}{% else %}/static/img/uknown-poster.jpg{% endif %}"/> 
+    </a>
+    <div class="itemdesc tooltify">
+        
+        {% if rate %}
+        <a class="ratelabel"  style="cursor: default" href="#" title="{% trans 'User rate'%}"><img src="/static/img/person-icon.png" style="margin-right: 5px;"/>{{rate|floatformat}}</a> 
+        {% else %}
+        <span class="rateuknown">{% trans 'Unrated'%}</span>
+        {% endif %}
+
+        <a href="/item/{{ item.id }}/title/{{item.normalized_name}}/" class="title">{{ item.name }}</a><span class="year"> ({{ item.released|date:"Y"}})</span>
+
+        {% if item.trailer %}
+        <a class="trailerdetail tooltify" href="{{item.trailer}}" title="{% trans 'Watch the trailer' %}" style="margin-left: 10px;"><img src="/static/img/video_icon.gif"/></a>
+        {% endif %}
+        
+        <div class="description">
+            <span class="autotranslate">{{ item.overview }}</span>
+            <a href="/item/{{ item.id }}/">{% trans 'More'%}</a>
+        </div>
+        
+    </div>
+
+</div>
+{% endspaceless %}

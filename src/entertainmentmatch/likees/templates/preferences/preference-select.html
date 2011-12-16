@@ -1,0 +1,14 @@
+{% extends "preferences/preference.html" %}
+
+{% load likeestags %}
+
+{% load i18n %}
+
+{% block preference-block %}
+<select name="{{prefname}}">
+    {% comment %}Iteramos asi porque no es un map, para mantener la ordenacion{% endcomment %}
+    {% for row in prefoptions %}
+    <option value="{{row.0}}"{%ifequal row.0 prefvalue%} selected="selected"{%endifequal%}>{{row.1}}</option>
+    {% endfor %}
+</select>
+{% endblock %}

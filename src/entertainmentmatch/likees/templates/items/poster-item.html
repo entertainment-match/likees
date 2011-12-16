@@ -1,0 +1,6 @@
+{% spaceless %}
+        <div class="poster-item"> 
+            <a href="/item/{{ item.id }}/title/{{item.normalized_name}}/"><img class="poster" alt="{{ item.name }}" src="{% if item.thumb %}{{COVER_DOMAIN}}{{item.thumb.url}}{% else %}/static/img/uknown-poster.jpg{% endif %}"/></a>
+            <div><a href="/item/{{ item.id }}/title/{{item.normalized_name}}/" class="title">{{ item.name }}</a></div> 
+        </div> 
+{% endspaceless %}

@@ -1,0 +1,30 @@
+{% load i18n %}
+var language = {
+    'favs-add':'{% trans 'Add to faves' %}',
+    'favs-del':'{% trans 'Delete from faves' %}',
+
+    'wishlist-add':'{% trans 'Add to wishlist' %}',
+    'wishlist-del':'{% trans 'Delete from wishlist' %}',
+
+    'ignore-add':'{% trans 'Ignore' %}',
+    'ignore-del':'{% trans 'Stop ignoring' %}',
+    
+    'friend-add':'{% trans 'Add to friends' %}',
+    'friend-del':'{% trans 'Remove from friends' %}',
+    
+    'range-from-to':'{% blocktrans with '{fromyear}' as fromyear and '{toyear}' as toyear %}From {{fromyear}} to {{toyear}}{% endblocktrans %}',
+    
+    'create-tag-prompt':'{% trans 'What is the tag name?' %}',
+    'cancel-rating':'{% trans 'Cancel rating' %}',
+
+    'facebook-voted':'{% trans 'Has voted {movie} with {value}' %}',
+    'facebook-faves':'{% trans 'Has chosen {movie} as favorite movie' %}',
+    'facebook-likees-desc':'{% trans 'Likees is a social network where you can vote movies, add them to faves and get recommendation from other users.'%}', 
+
+}
+
+var permissions = {
+    {% for key,value in preferences.items %}
+    '{{key}}':'{{value}}',
+    {% endfor %}
+}

@@ -1,0 +1,55 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans 'Getting started'%}{% endblock %}
+
+{% block content %}
+
+<div>
+    <div id="submenu">
+        <ul id="subnavi">
+            <li><a {% if subsection = 'help' %}class="current"{% endif %} href="/tutorial/"><span>{% trans 'Help' %}</span></a></li>
+            <li><a {% if subsection = 'tours' %}class="current"{% endif %} href="/tutorial/tour/"><span>{% trans 'Tours' %}</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="mainhome">
+
+    <noscript>
+        <div class="infobox">
+            {% trans 'noscript'%}
+        </div>
+    </noscript>
+
+<h1>{% trans 'Getting started' %}</h1>
+
+<div style="border: 1px solid #ccc; border-radius: 3px; line-height: 150%; font-size: 13px; margin-bottom: 20px; padding-top: 10px; background-color: #fff;">
+        <div style="overflow: hidden; padding: 5px 20px 15px 100px;">
+                <img src="/static/img/tutorial/tutorial-4.png" style="float: right; margin-left: 15px; border: 1px solid #aaa; -webkit-box-shadow: #ccc 4px 4px 4px"/>
+                <h2>{% trans 'Rate movies.' %}</h2>
+                <p style="text-align:right">
+                {% trans "The more we know about the movies you like, the better our recommendations will be. You can start by going through our <a href='/tutorial/tour/'>tours.</a>" %}
+                </p>
+        </div>
+        <div style="overflow: hidden; padding: 5px 100px 15px 20px;">
+                <img src="/static/img/tutorial/tutorial-2.png" style="float: left; margin-right: 15px; border: 1px solid #aaa; -webkit-box-shadow: #ccc 4px 4px 4px"/>
+                <h2>{% trans 'Complete your profile info.' %}</h2>
+                <p style="text-align:left">
+                {% trans "Your gender and your age are extra pieces of information that can be taken into account when providing recommendations. Go complete your <a href='/accounts/profile'>profile</a>!" %}
+                </p>
+        </div>
+        <div style="overflow: hidden; padding: 5px 20px 15px 100px;">
+                <img src="/static/img/tutorial/tutorial-3.png" style="float: right; margin-left: 15px; border: 1px solid #aaa; -webkit-box-shadow: #ccc 4px 4px 4px"/>
+                <h2>{% trans 'Browse recommendations.' %}</h2>
+                <p style="text-align:right">
+                {% trans 'Browse the recommendations we provide, add movies to your watchlist or to any custom list.' %}
+                </p>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends "users/register.html" %}
+
+{% load i18n %}
+
+{% block regcontent %}
+<p>
+{% blocktrans with reguser.username as username %}
+Congratulations <b>{{username}}</b>!!
+{% endblocktrans %}
+</p>
+<p>
+{% blocktrans %}
+We sent a mail to your address. To complete the registration process, read the mail and follow the instructions
+{% endblocktrans %}
+</p>
+{% endblock %}

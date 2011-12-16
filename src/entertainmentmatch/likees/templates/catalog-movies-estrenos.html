@@ -1,0 +1,33 @@
+{% extends "catalog-movies.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Now playing in cinemas" %}{% endblock %}
+
+{% block contentcatalog %}
+
+    <div class="maindatacontainer">
+
+        <div class="tablemoviesfull">
+            <div style="overflow: hidden;">
+                <h3 style="float:left">{% trans 'Now playing in cinemas'%}</h3>
+                {% if totalitems %}
+                <p style="float:right; line-height: 200%"><b>{% trans 'Total movies found'%}: </b>{{totalitems}}</p>
+                {% endif %}
+            </div>
+
+            {% for date, movies in estrenos.items %} 
+                <div class="movieblock" style="float: left;">
+                    <h3>{% trans 'Released on ' %} {{ date}}</h3>
+                    {% for item in movies %}
+                    {% include "items/poster-item.html"%}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,70 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Catalog" %}{% endblock %}
+
+{% block content %}
+
+    {% include "catalog-movies-submenu.html"%}
+
+    <div id="bread">
+        {% include "breadcrumb.html"%}
+    </div>
+
+    {% block contentcatalog %}
+
+    {% include "movies-options.html"%}
+    
+    <div class="maindatacontainer">
+
+        <div class="tablemovies">
+            <div style="overflow: hidden;">
+                <h3 style="float:left">{% trans 'Movies'%}</h3>
+                {% if totalitems %}
+                <p style="float:right; line-height: 200%"><b>{% trans 'Total movies found'%}: </b>{{totalitems}}</p>
+                {% endif %}
+            </div>
+            
+            {% for item in movies.object_list %}
+            {% include "items/row-item.html"%}
+            {% endfor %}
+
+            {% with movies as list %}
+            {% with '/movies/' as context %}
+            {% include "paginator.html"%}
+            {% endwith %}
+            {% endwith %}
+
+        </div>
+
+        <div class="tablemoviesleft">   
+            {% if categories != None %}
+            <div class="boxtop"></div>
+
+            <h3>{% trans 'Categories'%}</h3>
+            <div class="box">
+                <!--INI DYNAMIC: Listado de Categoria-->
+                {% spaceless %}
+                <ul class="categories">
+                    {% for cat in categories %}
+                    {% ifnotequal selected_category cat.id %}
+                    <li><a href="/category/{{cat.id}}"> <span class="item"> <b>{{cat.name}}</b></span></a></li>
+                    {% else %}
+                    <li class="selected">{{cat.name}} &#9666;</li>
+                    {% endifnotequal %}
+                    {% endfor %}
+                </ul>
+                {% endspaceless %}
+                <!-- FIN DYNAMIC -->    
+            </div>
+
+            <div class="boxbottom"></div>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% endblock %} 
+
+{% endblock %}
+

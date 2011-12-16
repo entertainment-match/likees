@@ -1,0 +1,87 @@
+{% extends "main-lightbox-layout.html" %}
+
+{% load i18n %}
+
+{% load likeestags %}
+
+{% block content %}
+<h2>{% trans 'Choose your avatar option'%}</h2>
+
+<div id="uploadinfo" class="infobox"> </div>
+
+<form id="avatarform" action="/accounts/profile/avatar/" method="post" enctype="multipart/form-data" style="padding-top: 25px">
+<div>
+    <input type="radio" name="avatarop" value="gravatar" checked="checked" id="rgravatar"/><label for="rgravatar"><b>{% trans 'Load from Gravatar.com'%}</b></label>
+    <a target="_blank" href="http://www.gravatar.com">{% trans 'What is Gravatar?'%}</a>
+    <div style="margin-bottom: -10px; padding: 10px 0px 0px; text-align: center;">
+        <img id="gravatarimg" src="{{glink}}" title="{% trans 'Avatar from Gravatar'%}"/>
+    </div>
+</div>
+{% if request.session.preferences.facebook_id %}
+<div>
+    <input type="radio" name="avatarop" value="facebook" id="rfacebook"/><label for="rfacebook"><b>{% trans 'Load from your Facebook profile'%}</b></label>
+
+    <div style="margin-bottom: -10px; padding: 10px 0px 0px; text-align: center;">
+        <img id="facebookimg" src="https://graph.facebook.com/{{request.session.preferences.facebook_id}}/picture" title="{% trans 'Your facebook profile picture' %}"/>
+    </div>
+</div>
+{% endif %}
+<div>
+    <input type="radio" name="avatarop" value="upload" id="rupload"/><label for="rupload"><b>{% trans 'Upload a picture...'%}</b></label>
+</div>
+<div>
+    <input id="btnupload" type="file" name="file" value=""/>
+</div>
+<div>
+{% trans 'Accepted image formats: JPG, PNG, Non animated GIF'%}
+</div>
+<div id="progressbar"></div>
+
+</form>
+
+<div class="stdhrtoolbar">
+    <a href="#" id="btncancel" class="stdbutton">{% trans 'Cancel'%}</a>
+    <a href="#" id="btnaccept" class="stdbutton default">{% trans 'Accept'%}</a>
+</div>
+
+<script type="text/javascript">
+
+    function showResponse (responseText, statusText, xhr, $form)  {
+        if (responseText.result == 'ko') {
+            $("#uploadinfo").html(responseText.msg); 
+            $("#uploadinfo").show(); 
+            $("#progressbar").hide();
+            $.colorbox.resize();
+        } else {
+            window.location.reload();
+        }
+    }
+    $(document).ready(function(){        
+        
+    $('#uploadinfo').hide(); 
+
+    var options = { success: showResponse, dataType: 'json' }; 
+    
+    $("#avatarform").ajaxForm(options);
+    $("#btnaccept").click(function(){
+        $("#uploadinfo").hide(); 
+        $("#progressbar").show();
+        $("#progressbar").progressbar({ value: 37 });
+        $.colorbox.resize();
+        $("#avatarform").submit();
+    });        
+    $("#btncancel").click(function(){
+        $.fn.colorbox.close()
+    });        
+    $("#btnupload").click(function(){
+        $("#rupload").attr('checked', 'checked');    
+    });
+    $('.lightboxbody').load(function() {
+        $.colorbox.resize();
+    });
+    $.colorbox.resize();
+    
+    });
+
+</script>
+{% endblock %}

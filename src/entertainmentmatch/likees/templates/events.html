@@ -1,0 +1,25 @@
+{% extends "dashboard-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Dashboard" %}{% endblock %}
+
+{% block section %}
+
+    <h2>{% trans 'Recent activity'%}</h2>
+    <ul class="activity">
+        {% for event in events.object_list %}
+        <li>
+        {% include "events/row-event.html"%}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    {% with events as list %}
+    {% with '/events/' as context %}
+    {% include "paginator.html"%}
+    {% endwith %}
+    {% endwith %}
+   
+{% endblock %}
+

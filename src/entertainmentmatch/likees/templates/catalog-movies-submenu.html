@@ -1,0 +1,21 @@
+{% load i18n %}
+
+    <div>
+        <div id="submenu">
+            <ul id="subnavi">
+                <li><a {% if subsection = 'now playing in cinemas'%}class="current"{% endif %}  href="/new/">{% trans "Now playing in cinemas" %}</a></li>
+                <li><a {% if subsection = 'explore'%}class="current"{% endif %}href="/movies/">{% trans "Explore catalog" %}</a></li>
+                {% if user.is_authenticated %}
+                <li><a {% if subsection = 'wishlist'%}class="current"{% endif %}  href="/wishlist/">{% trans "I want to watch" %}</a></li>
+                <li><a {% if subsection = 'recommendations'%}class="current"{% endif %}  href="/recommendations/">{% trans "Recommendations" %}</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li style="float:right;"><a {% if subsection = 'ignored'%}class="current"{% endif %}  href="/ignored/" style="background-image: url('/static/img/icons.png'); background-position: 0px -1384px; background-repeat:no-repeat; padding-left: 20px;">{% trans "Ignored" %}</a></li>
+                <li style="float:right;"><a {% if subsection = 'votes'%}class="current"{% endif %}  href="/votes/" style="background-image: url('/static/img/icons.png'); background-position: 0px -748px; background-repeat:no-repeat; padding-left: 20px;">{% trans "Voted" %}</a></li>
+                <li style="float:right;"><a {% if subsection = 'favourites'%}class="current"{% endif %}  href="/favourites/" style="background-image: url('/static/img/icons.png'); background-position: 0px -945px; background-repeat:no-repeat; padding-left: 20px;">{% trans "Favourites" %}</a></li>
+                <li style="float:right; font-weight: normal;">{% trans 'My films'%}:</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+

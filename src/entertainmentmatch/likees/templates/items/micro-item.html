@@ -1,0 +1,6 @@
+{% spaceless %}
+        <div class="micro-item"> 
+            <img class="poster" alt="{{ item.name }}" src="{{COVER_DOMAIN}}{% if item.thumb %}{{item.thumb.url}}{% else %}/static/img/uknown-poster.jpg{% endif %}"/> 
+            <div><a href="/item/{{ item.id }}/" class="title">{{ item.name }}</a></div> 
+        </div> 
+{% endspaceless %}

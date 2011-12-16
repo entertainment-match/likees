@@ -1,0 +1,144 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% load likeestags %}
+
+{% block title %}{% trans "appname" %} - {% trans "Home" %}{% endblock %}
+
+{% block content %}
+
+<div class="mainhome" style="border-width: 0px 1px 0px 1px; border-style:solid; border-color:#fff">
+
+    <noscript>
+        <div class="infobox">
+            {% trans 'noscript'%}
+        </div>
+    </noscript>
+
+        <div class="tablemoviesfull" style="overflow: hidden">
+            <ul class="carousel">
+            {% for item in movies %}
+            {% comment %}{% include "items/row-item-list.html"%}{% endcomment %}
+            <li>
+            {% include "items/poster-item.html"%}
+            </li>
+            {% endfor %}
+            </ul>
+            <p>{% trans '<a href="/new/">View more...</a>' %}</p>
+        </div>
+
+<div style="width: 300px; float:right; border: 1px solid #ddd; border-radius: 5px; padding: 10px; background-color: #fff">
+
+    <h2>{% trans 'Sign in'%}</h2>
+
+    <form method="post" action="/accounts/register/">
+        <dl>
+            <dt><label class="required" for="username">{% trans 'Username'%}</label></dt>
+            <dd style="width: auto;">
+            <input type="text" class="roundedbox" value="" id="u_username" name="username">
+            </dd>
+<!--
+            <dt><label class="required" for="name">{% trans 'Name'%}</label></dt>
+            <dd>
+            <input type="text" class="roundedbox" value="" id="u_name" name="name">
+            </dd>
+
+            <dt><label class="optional" for="surname">{% trans 'Surname'%}</label></dt>
+            <dd>
+            <input type="text" class="roundedbox" value="" id="u_surname" name="surname">
+            </dd>
+
+            <dt><label class="required" for="gender">{% trans 'Gender'%}</label></dt>
+            <dd>
+            <select name="gender" class="roundedbox">
+                <option value="male">{% trans 'male' %}</option>
+                <option value="female">{% trans 'female' %}</option>
+            </select>
+            </dd>
+            <dt><label class="optional" for="birthdate">{% trans 'Birthdate' %}</label></dt>
+            <dd>
+            <input type="text" name="birthdate" class="datepicker roundedbox"/>
+            <br/>
+            <select name="birthdate_day">
+            {% for day in 31|get_range %}
+            <option value="{{day|add:"1"}}">{{day|add:"1"}}</option>
+            {% endfor%}
+            </select>
+            <select name="birthdate_month">
+            {% for month in 12|get_range %}
+            <option value="{{month|add:"1"}}">{{month|add:"1"}}</option>
+            {% endfor%}
+            </select>
+            <select name="birthdate_year">
+            {% for year in 50|get_range %}
+            <option value="{{year|add:"1950"}}">{{year|add:"1950"}}</option>
+            {% endfor%}
+            </select>
+            </dd>
+            -->
+            <dt><label class="optional" for="mail">{% trans 'E-Mail'%}</label></dt>
+            <dd style="width: auto;">
+            <input type="text" class="roundedbox" value="" id="u_mail" name="mail">
+            </dd>
+            <dd>
+            <dt><label class="required" for="password">{% trans 'Password'%}</label></dt>
+            <dd style="width: auto;">
+            <input type="password" class="roundedbox" value="" id="u_password" name="password">
+            </dd>
+            <dd style="width: auto;">
+            <input type="submit" value="{% trans 'Register'%}" />
+            </dd>
+        </dl>
+    </form>
+</div>
+
+<div style="float:left; color: #666; width: 500px">
+        <h1>{% trans 'What is Likees?' %}</h1>
+        <p>{% trans "Likees is a movie-oriented social network. You can browse movies, rate them and discover new ones, by matching your tastes with other registered users'." %}
+        
+        <h1>{% trans 'How does Likees work?' %}</h1>
+        <p>{% trans "We calculate affinity among our user base. Based on these calculations, we recommend you movies that you haven't rated so far." %}
+
+        <h1>{% trans 'What do Likees offer?' %}</h1>
+        <p>{% trans "Browse the catalogue, rate movies you've seen, add those you haven't to your watchlist, create custom lists, and share your votes and taste on Facebook, Twitter, ..." %}
+
+</div>
+<!--
+<div class="steps">
+        
+
+    <div class="step">
+        <p class="title"><span class="num">1</span> {% trans 'Explore' %}</p>
+        <p class="desc">{% trans 'Explore our <a href="/movies">catalog</a>.' %}</p>
+    </div>
+    <div class="step">
+        <p class="title"><span class="num">2</span> {% trans 'Sign in & Rate' %}</p>
+        <p class="desc">{% trans 'Vote movies, add them to faves or ignore them from your searches and catalog.' %}</p>
+    </div>
+    <div class="step">
+        <p class="title"><span class="num">3</span> {% trans 'Discover' %}</p>
+        <p class="desc">{% trans 'Discover new films and add them to your "I want watch" list. This is your list of pendent watching films.' %}</p>
+    </div>
+</div>
+-->
+
+<table>
+    <tr>
+        <td style="padding-right: 20px;">
+            <img src="/static/img/tutorial/tutorial-4.png" style="width: 245px; border: 1px solid #aaa; -webkit-box-shadow: #ccc 4px 4px 4px"/>
+            <p>{% trans 'Rate movies ...'%}</p>
+        </td>
+        <td style="padding-right: 0px;">
+            <img src="/static/img/tutorial/tutorial-3.png" style="width: 245px; border: 1px solid #aaa; -webkit-box-shadow: #ccc 4px 4px 4px"/>
+            <p>{% trans '... or add them to your watchlist'%}</p>
+        </td>
+    </tr>
+</table>
+
+
+</div>
+</div>
+
+{% endblock %}
+

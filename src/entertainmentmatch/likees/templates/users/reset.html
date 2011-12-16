@@ -1,0 +1,23 @@
+{% extends "main-layout.html" %}
+
+{% block content %}
+
+{% load i18n %}
+
+<div style="text-align:center; font-size: 1.2em; width: 500px; border: 1px solid #ccc; border-radius: 5px; margin: 10px auto; padding: 20px; ">
+
+    <div class="infobox">
+        <p>{% trans 'Enter your e-mail adress to change your password' %}</p>
+    </div>
+
+    <form method="post" action="{% url likees.views.views.reset_password %}">
+        {% csrf_token %}
+        {% trans 'E-mail'%}:<input type="text" name="email" value=""/>
+        <input type="submit" class="stdbutton default" value="{% trans 'Reset' %}" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+</div>
+
+{% endblock %}
+

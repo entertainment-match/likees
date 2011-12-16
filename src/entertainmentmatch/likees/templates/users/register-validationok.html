@@ -1,0 +1,16 @@
+{% extends "users/register.html" %}
+
+{% load i18n %}
+
+{% block regcontent %}
+<p>
+{% blocktrans with reguser.username as username %}
+Congratulations <b>{{username}}</b>!!
+{% endblocktrans %}
+</p>
+<p>
+{% blocktrans %}
+You complete the registration process!!
+{% endblocktrans %}
+</p>
+{% endblock %}

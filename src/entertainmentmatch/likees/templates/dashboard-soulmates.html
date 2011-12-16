@@ -1,0 +1,49 @@
+{% extends "dashboard-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Dashboard" %}{% endblock %}
+
+{% block section %}
+
+<div style="float:left; width: 100%">
+    <h2>{% trans 'Soulmates'%}</h2>
+                 <ul class="userlist tooltify">
+                    {% for soulmate in soulmates %}
+                    <li>
+                    {% with soulmate|last as score %}
+                    {% with soulmate|first as ouser %}
+                    {% include "users/mini-lastest-user.html"%}
+                    {% endwith %}
+                    {% endwith %}
+                    </li>
+                    {% empty %}
+                    <div class="infobox">{% trans 'In this section you will find all your soulmate once you have voted enough movies'%}</div>
+                    <p>{% trans "If you don't know how to begin, <a href='/tutorial/'>click here</a> "%}</p>
+                    <p>{% trans "You can begin voting our <a href='/tutorial/tour/'>tours</a> " %}</p>                    {% endfor %}
+                </ul>
+</div>
+
+
+<!-- TODO
+<div style="float:right; width: 49%">
+    <h2>{% trans 'Your friends'%} (Under Construction!)</h2>
+    
+    {% if friends.items %}
+
+    <ul class="userlist">
+        {% for key, friend in friends.items %}
+        <li>
+        {% with friend as ouser %}{% include "users/mini-lastest-user.html"%}{% endwith %}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    {% else %}
+        <div class="infobox">{% trans 'In this section you will find all your friends once you have added any'%}</div>
+    {% endif %}
+</div>
+-->
+
+{% endblock %}
+

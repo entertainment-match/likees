@@ -1,0 +1,37 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans 'Tutorial'%}{% endblock %}
+
+{% block content %}
+
+<div>
+    <div id="submenu">
+        <ul id="subnavi">
+            <li><a href="/tutorial/"><span>{% trans 'Help' %}</span></a></li>
+            <li><a href="/tutorial/tour/"><span>{% trans 'Tours' %}</span></a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="mainhome">
+
+    <noscript>
+        <div class="infobox">
+            {% trans 'noscript'%}
+        </div>
+    </noscript>
+
+<h1>{% trans 'Getting started' %}</h1>
+<p>{% trans 'Likees needs some information about your movie tastes to offer you the best movie recommendations. Vote our tours and you will find more and better soulmates.' %} </p>
+
+<ul>
+{% for tour in tours %}
+<li><p><a href="/tutorial/tour/?list={{tour.name}}">{{tour.description}}</a></p></li>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}
+

@@ -1,0 +1,153 @@
+{% load likeestags %}
+{% spaceless %}
+{% load i18n %}
+
+<div class="rowitem fadelistitem fadeignoreitem{% if section == 'wishlist'%} fadewishitem{% endif %}{% if 'fave' in tags|lookup:item.id %} starred{% endif %}">
+    <a class="itemposter" href="/item/{{ item.id }}/title/{{item.normalized_name}}/">
+        <img class="poster" alt="{{ item.name }}" src="{% if item.thumb %}{{COVER_DOMAIN}}{{item.thumb.url}}{% else %}/static/img/uknown-poster.jpg{% endif %}"/> 
+    </a>
+    <div class="itemdesc">
+
+        <div class="box">
+            <div class="left-box tooltify">
+                <a href="/item/{{ item.id }}/title/{{item.normalized_name}}/" class="{% if item.name|length > 38 %}s{%endif%}title">{{ item.name }}</a><span class="year"> ({{ item.released|date:"Y"}})</span>
+                {% if item.trailer %}
+                <a class="trailerdetail tooltify" href="/item/{{item.id}}/trailer/" title="{% trans 'Watch the trailer' %}" style="margin-left: 10px;"><img src="/static/img/video_icon.gif" alt="Video: {{ item.name }}"/></a>
+                {% endif %}
+                {% for country in item.produced.all %}
+                <img src="/static/img/flags/{{country.id|lower}}.png" style="margin-left: 10px;" title="{{country.name}}"/>
+                {% endfor %}
+            </div>
+            
+            <div class="right-box tooltify">
+                {% if item.rating %}
+                <a class="lightbox ratelabel" href="/item/{{item.id}}/rate/" title="{% trans 'Get rate details'%}">{{item.rating|floatformat}}</a> 
+                {% else %}
+                <span class="rateuknown">{% trans 'Unrated'%}</span>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="box">
+            <div class="left-box">
+                <!-- TODO
+                <p style="padding: 10px 0px 5px 0px;">
+                <span>{% trans 'Director'%}: Unknown</span>
+                {% for ijcp in cast %}
+                {% if ijcp.job.id = 1%}
+                <a href="/person/{{ijcp.person.id}}/title/{{ijcp.person.normalized_name}}/">{{ ijcp.person.name }}</a>
+                {% endif %}
+                {% endfor %}
+                </p>
+                -->
+            </div>
+            <div class="right-box">
+                {% if user.is_authenticated %}
+                {% if votes != None %}
+                <div class="itemrate">
+                    <div class="rateme"><a href="/item/{{item.id}}/vote/?test={{ votes|lookup:item.id }}" style="display: none;"></a></div>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% if section != 'admin' %}
+        <p class="description autotranslate">{{ item.overview }}</p>
+        {% else %}
+        <p> Original: {{ item.overview }}<p>
+        <p> Translated: <em class="autotranslate">{{ item.overview }}</em> </p>
+        {% endif %}
+
+        <div class="box">
+            <div class="left-box">
+                <a href="/item/{{ item.id }}/">{% trans 'More'%}</a>
+            </div>
+        </div>
+        
+        {% if user.is_authenticated %}
+
+        <div class="itemtags">
+            <b>{% trans 'Tags' %}: </b>
+            <ul class="commalist">
+                {% for tag in tags|lookup:item.id %}    
+                {% ifnotequal tag "wishlist" %}
+                {% ifnotequal tag "ignore" %}
+                {% ifnotequal tag "fave" %}
+                <li>{{ tag }}</li>
+                {% endifnotequal %}
+                {% endifnotequal %}
+                {% endifnotequal %}
+                {% empty %}
+                <li><span class="empty">{% trans 'None' %}</span></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% block actions %}
+        <div class="stdhtoolbar">
+            {% if 'fave' in tags|lookup:item.id %}    
+            <a class="stdbutton favs-action swapon" href="/item/{{item.id}}/fave/delete/"><img src="/static/img/snow/Star.png"/><span>{% trans 'Delete from faves' %}</span></a>
+            {% else %}
+            <a class="stdbutton favs-action" href="/item/{{item.id}}/fave/add/"><img src="/static/img/snow/Star.png"/><span>{% trans 'Add to faves' %}</span></a>
+            {% endif %}
+
+            {% if 'wishlist' in tags|lookup:item.id %}    
+            <a class="stdbutton wishlist-action swapon" href="/item/{{item.id}}/wishlist/delete/"><img src="/static/img/snow/CBS.png"/><span>{% trans 'Delete from wishlist' %}</span></a>
+            {%else%}
+            <a class="stdbutton wishlist-action" href="/item/{{item.id}}/wishlist/add/"><img src="/static/img/snow/CBS.png"/><span>{% trans 'Add to wishlist' %}</span></a>
+            {% endif %}
+
+            {% if 'ignore' in tags|lookup:item.id %}    
+            <a class="stdbutton ignore-fade-action swapon" href="/item/{{item.id}}/ignore/delete/"><img src="/static/img/snow/Stop.png"/><span>{% trans 'Stop ignoring' %}</span></a>
+            {%else%}
+            <a class="stdbutton ignore-fade-action" href="/item/{{item.id}}/ignore/add/"><img src="/static/img/snow/Stop.png"/><span>{% trans 'Ignore' %}</span></a>
+            {% endif %}
+        </div>
+        {% endblock %}
+
+        {% endif %}
+    </div>
+
+    {% if user.is_staff and section = 'admin' %}
+    <fieldset style="border: 1px solid #555; padding: 15px;">
+        <legend style="font-weight: bold; color: #555;">Opciones de administracion:</legend>
+        
+        <form action="/item/{{item.id}}/moderate/add/" method="post" class="adminform">
+            {% csrf_token %}
+            Deleted: 
+            <select name="deleted">
+                <option value="0" {% if item.deleted == 0 %}selected="selected"{% endif %}>No</option>
+                <option value="1" {% if item.deleted == 1 %}selected="selected"{% endif %}>Si</option>
+            </select>
+            Priority: 
+            <select name="priority">
+                <option value="0" {% if item.priority == 0 %}selected="selected"{% endif %}>Descartar</option>
+                <option value="1" {% if item.priority == 1 %}selected="selected"{% endif %}>Baja</option>
+                <option value="2" {% if item.priority == 2 %}selected="selected"{% endif %}>Normal</option>
+                <option value="3" {% if item.priority == 3 %}selected="selected"{% endif %}>Alta</option>
+                <option value="4" {% if item.priority == 4 %}selected="selected"{% endif %}>Muy Alta</option>
+                <option value="10" {% if item.priority == 10 %}selected="selected"{% endif %}>Pendiente moderar</option>
+            </select>
+            Released (yyyy-mm-dd): <input type="text" name="released" value="{{ item.released|date:'Y-m-d' }}" />
+            <input type="submit" value="{% trans 'Moderate'%}"/>
+        </form>
+        
+        <form action="/item/{{item.id}}/language/add/" method="post" class="adminform">
+            {% csrf_token %}
+            Language:
+            <select name="language">
+                <option value="es">Español</option>
+                <option value="en">Inglés</option>
+                <option value="fr">Francés</option>
+            </select>
+            
+            <input type="text" name="language"  value="es"/>
+            Titulo: <input type="text" name="title" value="{% if item.name_es != None %}{{item.name_es}}{% endif %}"/>
+            Sinopsis: <textarea rows="5" cols="80" name="overview">{% if item.overview_es != None %}{{item.overview_es}}{% endif %}</textarea>
+            <input type="submit" value="{% trans 'Update'%}"/>
+        </form>
+    </fieldset>
+    {% endif %}
+</div>
+{% endspaceless %}

@@ -1,0 +1,31 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {{ item.name }}{% endblock %}
+
+{% block metas %}
+    <meta property="og:title" content="{{ item.name }}" />
+    
+    <meta property="og:type" content="movie" />
+    <meta property="og:url" content="{{TEMPLATE_DOMAIN}}item/{{ item.id }}/title/{{item.normalized_name}}/" />
+    <meta property="og:site_name" content="Likees" />
+    <meta property="fb:admins" content="650691227,649253967" />
+    {% if item.thumb %}<meta property="og:image" content="{{COVER_DOMAIN}}{{item.thumb.url}}" />{% endif %}
+    
+{% endblock %}
+
+{% block content %}	
+
+{% include "catalog-movies-submenu.html"%}
+
+<div id="bread">
+    {% include "breadcrumb.html"%}
+</div>
+
+{% include "items/main-item.html"%}
+
+{% endblock %}
+
+
+

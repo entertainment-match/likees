@@ -1,0 +1,76 @@
+{% load i18n %}
+
+    <div id="optionstitle">
+        <a href="#" class="options-action">
+            <img src="/static/img/more.png"/>
+            <strong>{% trans 'Options'%}: </strong>{% trans 'Filters and other visualization options...'%}
+        </a>
+    </div>
+    <!-- TODO: hacer hidden dependiendo de si ha buscado anteriormente -->
+    <div id="options" class="hidden">
+
+        <form action="" method="get">
+            {% csrf_token %}
+            <div id="filters" style="float: left;">
+
+                <div class="filterrow">
+                    <span class="filterlabel">{% trans 'Released on'%}:</span>
+                    <div class="slider-range-years"></div>
+                    <input class="slider-range-years-from" type="hidden" name="from" value="1950"/>
+                    <input class="slider-range-years-to" type="hidden" name="to" value="2012"/>
+                    <span class="slider-range-years-label">
+                        {% blocktrans with 1950 as fromyear and 2012 as toyear %}From {{fromyear}} to {{toyear}}{% endblocktrans %}
+                    </span>
+                </div>
+
+                <div class="filterrow">
+                    <span class="filterlabel">{% trans 'Category'%}:</span>
+                    {% spaceless %}
+                    <select name="category">
+                        <option value="">{% trans 'All'%}</option>
+                        {% for cat in categories %}
+                        <option value="{{cat.id}}">{{cat.name}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endspaceless %}
+                    <span class="filterlabel">{% trans 'Order by'%}:</span>
+                    <select name="orderby">
+                        <option value="brate">{% trans 'Best rate'%}</option>
+                        <option value="wrate">{% trans 'Worst rate'%}</option>
+                        <option value="news">{% trans 'Newest first'%}</option>
+                        <option value="olds">{% trans 'Oldest first'%}</option>
+                    </select>
+                    <input type="submit" value="{% trans 'Filter'%}"/> 
+                </div>
+                
+                {% if user.is_authenticated %}
+                <div class="filterrow">
+                    <span class="filterlabel">{% trans 'Exclude voted films'%}:</span>
+                    <input type="checkbox" name="excludevoted"/>
+                </div>
+                {% endif %}
+
+            </div>
+        </form>
+
+        {% comment %}
+        <div style="float: right; text-align:right; padding-top: 10px;">
+            {% if totalitems %}
+            <p>{% trans 'Total movies loaded'%}: {{totalitems}}</p>
+            {% endif %}
+            <div style="margin: 10px 0px;">
+                {% trans 'Item size'%}: 
+                <a href="#" class="small-size-action tooltify" title="{% trans 'Small size'%}">{% trans 'Small size'%}</a>, 
+                <a href="#" class="medium-size-action tooltify" title="{% trans 'Medium size'%}">{% trans 'Medium size'%}</a>, 
+                <a href="#" class="huge-size-action tooltify" title="{% trans 'Huge size'%}">{% trans 'Huge size'%}</a>, 
+            </div>
+            <div style="margin: 10px 0px;">
+                {% trans 'Distribution'%}: 
+                <a href="#" class="rows-action tooltify" title="{% trans 'Show movies in rows distribution'%}">{% trans 'Rows'%}</a>, 
+                <a href="#" class="thumbs-action tooltify" title="{% trans 'Show movies in thumbs distribution'%}">{% trans 'Thumbs'%}</a>
+            </div>
+        </div>
+        {% endcomment %}
+
+    </div>
+

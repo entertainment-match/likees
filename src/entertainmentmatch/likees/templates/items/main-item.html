@@ -1,0 +1,264 @@
+{% load likeestags %}
+
+{% load i18n %}
+
+{% spaceless %}
+<div class="main-item">
+    <div class="ratings">
+        {% if item.rating %}
+        <a class="lightbox ratelabel tooltify" href="/item/{{item.id}}/rate/" title="{% trans 'Get rate details'%}">{{item.rating|floatformat}}</a> 
+        {% else %}
+        <span class="rateuknown">{% trans 'Unrated'%}</span>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <div class="rateme"><a href="/item/{{item.id}}/vote/?test={{ votes|lookup:item.id }}" style="display: none;"></a></div>
+        {% endif %}
+    </div>
+    <div class="itemtitlebox">
+        <h1 class="title">{{ item.name }}</h1><span class="year"> ({{ item.released|date:"Y"}})</span>
+        <div>
+            <b>{% trans 'Directed by'%}: </b>
+            <ul class="castlist commalist">
+                {% for ijcp in cast %}
+                {% if ijcp.job.id = 1%}
+                <li><a href="/person/{{ijcp.person.id}}/title/{{ijcp.person.normalized_name}}/">{{ ijcp.person.name }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            {% if item.categories.all %}
+            <b>{% trans 'Genres'%}: </b>
+            <ul class="genrelist commalist">
+                {% for category in item.categories.all %}
+                <li><a href="/category/{{category.id}}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="itemposter">
+        <img class="poster" alt="{{ item.name }}" src="{% if item.thumb %}{{COVER_DOMAIN}}{{item.thumb.url}}{% else %}/static/img/uknown-poster.jpg{% endif %}"/> 
+        
+        <div class="stdvtoolbar">
+            {% if user.is_authenticated %}
+            {% if 'fave' in tags|lookup:item.id %}    
+            <a class="stdbutton favs-action swapon" href="/item/{{item.id}}/fave/delete/"><img src="/static/img/snow/Star.png"/><span>{% trans 'Delete from faves' %}</span></a>
+            {% else %}
+            <a class="stdbutton favs-action" href="/item/{{item.id}}/fave/add/"><img src="/static/img/snow/Star.png"/><span>{% trans 'Add to faves' %}</span></a>
+            {% endif %}
+
+            {% if 'wishlist' in tags|lookup:item.id %}    
+            <a class="stdbutton wishlist-action swapon" href="/item/{{item.id}}/wishlist/delete/"><img src="/static/img/snow/CBS.png"/><span>{% trans 'Delete from wishlist' %}</span></a>
+            {%else%}
+            <a class="stdbutton wishlist-action" href="/item/{{item.id}}/wishlist/add/"><img src="/static/img/snow/CBS.png"/><span>{% trans 'Add to wishlist' %}</span></a>
+            {% endif %}
+
+            {% if 'ignore' in tags|lookup:item.id %}    
+            <a class="stdbutton ignore-fade-action swapon" href="/item/{{item.id}}/ignore/delete/"><img src="/static/img/snow/Stop.png"/><span>{% trans 'Stop ignoring' %}</span></a>
+            {%else%}
+            <a class="stdbutton ignore-fade-action" href="/item/{{item.id}}/ignore/add/"><img src="/static/img/snow/Stop.png"/><span>{% trans 'Ignore' %}</span></a>
+            {% endif %}
+            {% endif %}
+            
+            {% if item.trailer %}
+            <a class="stdbutton trailer-action trailerdetail" href="/item/{{item.id}}/trailer/"><img src="/static/img/video_icon.gif"/><span>{% trans 'Watch the trailer' %}</span></a>
+            {% endif %}
+        </div>
+    </div> 
+    
+    <div class="itemdesc">
+
+        <dl class="itemdetails">
+            {% if item.name %}
+            <dt>{% trans 'Original title'%}:</dt>
+            <dd>{{ item.original_name }}</dd>
+            {% endif %}
+
+            {% if item.released %}
+            <dt>{% trans 'Released on'%}:</dt>
+            <dd>{{ item.released }}</dd>
+            {% endif %}
+
+            {% if item.runtime %}
+            <dt>{% trans 'Duration'%}:</dt>
+            <dd>{{ item.runtime }} min.</dd>
+            {% endif %}
+
+            {% if item.buy_links %}
+            <dt>{% trans 'Buy links'%}:</dt>
+            <dd>{{ item.buy_links }}</dd>
+            {% endif %}
+
+            <!--
+            {% if item.rating %}
+            <dt>{% trans 'Rating'%}:</dt>
+            <dd>{{ item.rating|floatformat }}</dd>
+            {% endif %}
+            -->
+
+            {% if item.homepage %}
+            <dt>{% trans 'Homepage'%}:</dt> 
+            <dd><a target="_blank" href="{{ item.homepage }}">{{ item.homepage }}</a></dd>
+            {% endif %}
+
+            {% if item.producer.all %}
+            <dt>{% trans 'Produced by'%}: </dt>
+            <dd>
+            <ul class="productorlist commalist">
+                {% for producer in item.producer.all %}
+                <li> {{ producer.name }} </li>
+                {% endfor %}
+            </ul>
+            </dd>
+            {% endif %}
+
+            {% if cast %}
+            <dt>{% trans 'Cast'%}:</dt>
+            <dd>
+            <ul class="castlist commalist">
+                {% for ijcp in cast %}
+                {% if ijcp.job.id = 2%}
+                <li><a href="/person/{{ijcp.person.id}}/title/{{ijcp.person.normalized_name}}/">{{ ijcp.person.name }}</a>{% if ijcp.person.image %}<a class="lightbox" href="{{COVER_DOMAIN}}{{ ijcp.person.image.url }}"><img src="/static/img/person-icon.gif"/></a>{% endif %}</li>
+                {% endif %}
+                {% empty %}
+                <li><span class="empty">{% trans 'Empty' %}</span></li>
+                {% endfor %}
+            </ul>
+            </dd>
+            {% endif %}
+
+            {% if item.companies.all %}
+            <dt>{% trans 'Companies'%}:</dt>
+            <dd>
+            <ul class="castlist commalist">
+                {% for company in item.companies.all %}
+                <li> {{ company.name }} </li>
+                {% endfor %}
+            </ul>
+            </dd>
+            {% endif %}
+
+            <dt>{% trans 'Overview'%}: </dt>
+            <dd><span class="autotranslate">{{ item.overview }}</span></dd>
+
+        </dl>            
+
+        <div style="text-align:right; overflow:hidden">
+            <div class="facebook_btn" style="float: right; height: 24px; margin-top: 0px;">
+                <iframe src="http://www.facebook.com/plugins/like.php?href={{TEMPLATE_DOMAIN|iriencode}}item/{{item.id}}/title/{{item.normalized_name}}/&amp;layout=button_count&amp;show_faces=true&ampwhile(idth=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></div>
+            <div class="twitter_btn" style="float: right; height: 24px; margin-right: 10px; margin-bottom: 5px;"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="likees_es" data-lang="es">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="users-voted">
+            <b>{% trans 'Friends that saw this film' %}:</b>
+            {% if usersvoted %}
+            <ul class="userlist tooltify-user">
+                {% for uservote in friendsvoted %}   
+                {% with uservote.user as user %}
+                {% with uservote.rate as vote %}
+                <li>
+                {% include "users/micro-user.html"%}
+                </li>
+                {% endwith %}
+                {% endwith %}
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="empty">{% trans 'No friend has seen this movie' %}</p>
+            {% endif %}
+        </div>
+        <div class="users-voted">
+            <b>{% trans 'Users that voted this film' %}:</b>
+            {% if usersvoted %}
+            <ul class="userlist tooltify-user">
+                {% for uservote in usersvoted %}   
+                {% with uservote.user as user %}
+                {% with uservote.rate as vote %}
+                <li>
+                {% include "users/micro-user.html"%}
+                </li>
+                {% endwith %}
+                {% endwith %}
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="empty">{% trans 'No user has seen this movie' %}</p>
+            {% endif %}
+        </div> 
+        
+        <div class="item-lists" style="width: 100%; overflow: hidden;">
+            <b style="float: left; width: 100%">{% trans 'This film belongs to the lists' %}:</b>
+            <ul class="taglist" style="float:left;">
+                {% for mytag in mytags %}   
+                {% ifnotequal mytag "wishlist" %}
+                {% ifnotequal mytag "ignore" %}
+                {% ifnotequal mytag "fave" %}
+                <li id="listid-{{mytag}}" class="{% if mytag in tagsitem %}checked{%else%}unchecked{%endif%}">{{mytag}}</li>
+                {% endifnotequal %}
+                {% endifnotequal %}
+                {% endifnotequal %}
+                {% endfor %}
+            </ul>
+            <a class="create-tag-action" href="/item/{{item.id}}/tag/add/" style="float:left; margin-top: 12px;"> + {% trans 'Create new tag'%}</a>
+        </div> 
+        {% endif %}
+        
+        {% comment %}
+        <div class="item-critics tooltify">
+            <b>{% trans 'Film critics' %}:</b>
+            {% if critics %}
+            {% else %}
+            <p class="empty">{% trans 'No user has commented about this movie' %}</p>
+            {% endif %}
+            <ul>
+                {% for critic in critics %}
+                <li class="{% cycle 'odd' 'even' %}">
+                {% with critic.user as user %}{% include "users/micro-user.html"%}{% endwith %}
+                <span class="critic">{{critic.text}} </span>
+                {% if critic.user.username == user.username %}
+                <a href="/item/{{item.id}}/critic/delete/?id={{critic.id}}">Eliminar</a>
+                {% endif %}
+                </li>
+                {% endfor %}
+
+                {% if user.is_authenticated %}
+                <li>
+                {% if user.image.url %}
+                <img class="avatar" src="{{ user.image.url }}" alt="{{user.username}}"/>
+                {% else %}
+                <img class="avatar" src="/static/img/gravatar.png" alt=""/>
+                {% endif %}
+                <form id="criticform" action="/item/{{item.id}}/critic/add/" method="post" style="float: left; width: 400px;">
+                    {% csrf_token %}
+                    <textarea rows="5" cols="50" name="comment" id="critic-comment" style="width:500px;"></textarea>
+                    <input id="btnaddcritic" class="stdbutton" type="submit" value="{% trans 'Add to critics'%}"/> 
+                </form>
+                <script type="text/javascript">
+
+                    function showResponse (responseText, statusText)  {
+                        $("#critic-comment").html('Ok');
+                        alert(responseText);
+                    }
+
+                    $(document).ready(function(){        
+                        var options = { success: showResponse, dataType: 'json' }; 
+                        $("#criticform").ajaxForm(options);
+                        $("#btnaddcritic").click(function(){
+                            $("#criticform").submit();
+                        });        
+                    });
+
+                </script>
+                
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+        {% endcomment %}
+    </div>
+</div>
+{% endspaceless %}

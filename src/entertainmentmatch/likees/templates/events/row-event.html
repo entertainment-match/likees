@@ -1,0 +1,71 @@
+{% load likeestags %}
+{% spaceless %}
+{% load i18n %}
+<div class="rowevent">
+    {% with event.from_user as user %}
+    <a href="/user/{{user.username}}/">
+        {% if user.image.url %}
+        <img class="avatar" src="{{ user.image.url }}" title="{{user.username}}"/>
+        {% else %}
+        <img class="avatar" src="/static/img/gravatar.png" title="{{user.username}}"/>
+        {% endif %}
+    </a>
+    {%endwith%}
+    {% if event.action = 'vote'%}
+        {% if event.from_user.id = user.id %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname and event.value as value %}
+            You have voted <a href="/item/{{itemid}}">{{itemname}}</a> with {{value}}.
+            {% endblocktrans %}
+        {% else %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname and event.value as value %}
+            <a href="/user/{{username}}">{{username}}</a> has voted <a href="/item/{{itemid}}">{{itemname}}</a> with {{value}}.
+            {% endblocktrans %}
+        {% endif %}
+    {% endif %}
+    {% if event.action = 'add_wishlist'%}
+        {% if event.from_user.id = user.id %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname %}
+            You added <a href="/item/{{itemid}}">{{itemname}}</a> to your wish list.
+            {% endblocktrans %}
+        {% else %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname %}
+            <a href="/user/{{username}}">{{username}}</a> added <a href="/item/{{itemid}}">{{itemname}}</a> to his/her watch list.
+            {% endblocktrans %}
+        {% endif %}
+    {% endif %}
+   {% if event.action = 'add_critic'%}
+        {% if event.from_user.id = user.id %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname %}
+            You added a critic to <a href="/item/{{itemid}}">{{itemname}}</a>.
+            {% endblocktrans %}
+        {% else %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname %}
+            <a href="/user/{{username}}">{{username}}</a> added a critic to <a href="/item/{{itemid}}">{{itemname}}</a>.
+            {% endblocktrans %}
+        {% endif %}
+    {% endif %}
+    {% if event.action = 'add_fave'%}
+        {% if event.from_user.id = user.id %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname %}
+            You added <a href="/item/{{itemid}}">{{itemname}}</a> as a favourite item.
+            {% endblocktrans %}
+        {% else %}
+            {% blocktrans with event.from_user as username and event.item.id as itemid and event.item.name as itemname %}
+            <a href="/user/{{username}}">{{username}}</a> added <a href="/item/{{itemid}}">{{itemname}}</a> as a favourite item.
+            {% endblocktrans %}
+        {% endif %}
+    {% endif %}
+    {% if event.action = 'add_friend'%}
+        {% if event.from_user.id = user.id %}
+            {% blocktrans with event.from_user as username and event.value as value %}
+            You added <a href="/user/{{value}}">{{value}}</a> as friend.
+            {% endblocktrans %}
+        {% else %}
+            {% blocktrans with event.from_user as username and event.value as value %}
+            <a href="/user/{{username}}">{{username}}</a> added <a href="/user/{{value}}">{{value}}</a> as friend.
+            {% endblocktrans %}
+        {% endif %}
+    {% endif %}
+    <div style="color: #ccc; margin-top: 10px;">{{event.when|elapsed}}</div>
+</div>
+{% endspaceless %}

@@ -1,0 +1,15 @@
+{% load likeestags %}
+
+{% load i18n %}
+
+{% spaceless %}
+    <dt>
+        {{preftitle}}
+        <p class="opdesc">{{prefdesc}}<p>
+    </dt>
+    <dd>
+        {% block preference-block %}
+        <input type="text" name="{{prefname}}" value="{{prefvalue}}"/> 
+        {% endblock %}
+    </dd>
+{% endspaceless %}

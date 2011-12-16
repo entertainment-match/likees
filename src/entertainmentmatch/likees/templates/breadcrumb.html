@@ -1,0 +1,10 @@
+{% load i18n %}
+<!-- INIT: breadcrumb -->
+<ul>
+    {% for breaditem in breadcrumb %}
+    <li>&#187; <a href="{{ breaditem.url }}">{{ breaditem.title }}</a></li>
+    {% empty %}
+    <li><em>{% trans 'Empty' %}</em></li>
+    {% endfor %}
+</ul>
+<!-- END: breadcrumb -->

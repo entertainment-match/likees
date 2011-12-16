@@ -1,0 +1,40 @@
+{% extends "main-lightbox-layout.html" %}
+
+{% load i18n %}
+
+{% load likeestags %}
+
+{% block content %}
+<div style="width: 500px; text-align: left;">
+
+    <h2>{% trans 'Votes detail'%}</h2>
+
+    <div class="rate-detail">
+        <table border="0" style="width: 480px; margin: 30px auto 0px auto;" cellspacing="2" cellpadding="2">
+            <tr style="height: 100px; text-align:center; vertical-align: bottom;">
+                {% for item in list %}
+                {% endfor %}
+                {% for number_ in 10|get_range %}
+                {% with number_|add:"1" as number %}
+                {% with ratings|lookup:number as rate %}
+                <td style="height: 100px; width: 40px; vertical-align: bottom">
+                    {% ifnotequal rate.count 0 %}{{rate.count}}{% endifnotequal %}
+                    <div style="display:block; height: {{rate.percent}}%; width: 100%; text-align:center; border: 1px solid #888; background-color:#4999b3; color: #fff; font-weight: bold;">
+                </div>
+                </td>
+                {% endwith %}
+                {% endwith %}
+                {% endfor %}
+            </tr>
+            <tr style="text-align: center;">
+                {% for number_ in 10|get_range %}
+                <td><div class="ratelabel">{{forloop.counter}}</div></td>
+                {% endfor %}
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
+

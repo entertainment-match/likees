@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /accounts*
+Disallow: /contact*
+Disallow: /category*
+Disallow: /static/js*
+Disallow: /*css
+Disallow: /movies*
+Disallow: /search*
+Disallow: /admin*
+Sitemap: http://www.likees.org/sitemap.xml

@@ -1,0 +1,25 @@
+{% extends "items/row-item.html" %}
+
+{% load likeestags %}
+
+{% load i18n %}
+
+{% block actions %}
+<div class="stdhtoolbar">
+    {% if 'fave' in tags|lookup:item.id %}    
+    <a class="stdbutton favs-action swapon" href="/item/{{item.id}}/fave/delete/"><img src="/static/img/snow/Star.png"/><span>{% trans 'Delete from faves' %}</span></a>
+    {% else %}
+    <a class="stdbutton favs-action" href="/item/{{item.id}}/fave/add/"><img src="/static/img/snow/Star.png"/><span>{% trans 'Add to faves' %}</span></a>
+    {% endif %}
+
+    {% if 'wishlist' in tags|lookup:item.id %}    
+    <a class="stdbutton wishlist-action swapon" href="/item/{{item.id}}/wishlist/delete/"><img src="/static/img/snow/CBS.png"/><span>{% trans 'Delete from wishlist' %}</span></a>
+    {%else%}
+    <a class="stdbutton wishlist-action" href="/item/{{item.id}}/wishlist/add/"><img src="/static/img/snow/CBS.png"/><span>{% trans 'Add to wishlist' %}</span></a>
+    {% endif %}
+
+    <a class="stdbutton list-fade-action swapon" href="/tag/delete/{{item.id}}/?value={{key}}"><img src="/static/img/snow/Stop.png"/>{% trans 'Delete from list' %}</a>
+
+</div>
+{% endblock %}
+

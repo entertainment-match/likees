@@ -1,0 +1,1509 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-04 17:15+0000\n"
+"PO-Revision-Date: 2011-03-04 17:33\n"
+"Last-Translator: Daniel Albert Sanchez <hyde.x86@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: services/UserService.py:137
+msgid "JPEG, PNG, GIF only."
+msgstr "JPEG, PNG, GIF solamente."
+
+#: services/UserService.py:352
+msgid "There is an existing user with this email."
+msgstr "Ya existe un usuario con éste email."
+
+#: services/UserService.py:358
+msgid "This username is already in use. Please, pick another one"
+msgstr "El nombre de usuario ya está en uso. Por favor, elige otro"
+
+#: services/UserService.py:370
+msgid "Welcome to likees!"
+msgstr "Bienvenido a likees!"
+
+#: services/UserService.py:413
+msgid "Password recover on Likees"
+msgstr "Recuperar la contraseña de Likees"
+
+#: services/UserService.py:504
+msgid "You have a new follower on Likees"
+msgstr "Tienes un nuevo seguidor de Likees"
+
+#: services/UserService.py:515
+msgid "New query from: "
+msgstr "Nueva consulta de:"
+
+#: templates/about.html:9 templates/main-layout.html:153
+msgid "About us"
+msgstr "¿Quiénes somos?"
+
+#: templates/about.html:12
+msgid "Likees is a little big team from Barcelona (Spain), who pretends that you enjoy more watching films."
+msgstr "Likees es un pequeño gran equipo de Barcelona (España), que pretende que disfrutes más a la hora de ver películas."
+
+#: templates/about.html:13
+msgid "This project could not be raal without the fantastic opensource database <a href=\"http://www.themoviedb.org/\"><img src=\"http://cf1.themoviedb.org/images/tmdb-logo.png\"/></a>."
+msgstr "Este proyecto no podría ser real sin la fantástica base de datos opensource <a href=\"http://www.themoviedb.org/\"><img src=\"http://cf1.themoviedb.org/images/tmdb-logo.png\"/></a> ."
+
+#: templates/about.html:14
+msgid "We have to give special thanks to the Django Opensource Community."
+msgstr "Tenemos que dar las gracias a la Comunidad Opensource de Django."
+
+#: templates/about.html:15
+msgid "Thanks to Wikipedia, Google Translate, Fam fam fam and Django Transmeta."
+msgstr "Gracias a Wikipedia, Google Translate, Fam Fam Fam y Transmeta Django."
+
+#: templates/about.html:17
+msgid "If you consider that some of the info that we have is property of you, we would like to contct us and resolve this at: <a href=\"mailto:contact@likees.org\">contact@likees.org</a>"
+msgstr "Si consideras que parte de la información que mostramos es de tu propiedad, nos gustaría que nos contactaras para resolverlo en: <a href=\"mailto:contact@likees.org\">contact@likees.org</a>"
+
+#: templates/admin.html:5 templates/catalog-movies-category.html:5
+#: templates/catalog-movies-estrenos.html:5
+#: templates/catalog-movies-favourites.html:5
+#: templates/catalog-movies-ignored.html:5
+#: templates/catalog-movies-recommendations.html:5
+#: templates/catalog-movies-tour.html:5 templates/catalog-movies-votes.html:5
+#: templates/catalog-movies-wishlist.html:5 templates/catalog-movies.html:5
+#: templates/dashboard-friends.html:5 templates/dashboard-layout.html:5
+#: templates/dashboard-lists.html:5 templates/dashboard-profile.html:5
+#: templates/dashboard-soulmates.html:5 templates/dashboard.html:5
+#: templates/detail.html:5 templates/events.html:5 templates/home.html:7
+#: templates/list-tours.html:5 templates/main-layout.html:5
+#: templates/person.html:5 templates/search.html:5 templates/tutorial.html:5
+#: templates/userdetail.html:5
+msgid "appname"
+msgstr "Likees"
+
+#: templates/admin.html:5
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/admin.html:12 templates/catalog-movies-category.html:13
+#: templates/catalog-movies.html:5 templates/person.html:22
+#: templates/search.html:5 templates/search.html.py:16
+msgid "Catalog"
+msgstr "Catálogo"
+
+#: templates/admin.html:14 templates/catalog-movies-submenu.html:9
+#: templates/catalog-movies-wishlist.html:5
+#: templates/catalog-movies-wishlist.html:19 templates/main-layout.html:77
+#: templates/person.html:24 views/catalog.py:340
+msgid "I want to watch"
+msgstr "Pendiente de ver"
+
+#: templates/admin.html:15 templates/catalog-movies-recommendations.html:5
+#: templates/catalog-movies-recommendations.html:15
+#: templates/catalog-movies-submenu.html:10 templates/person.html:25
+#: views/catalog.py:263
+msgid "Recommendations"
+msgstr "Recomendaciones"
+
+#: templates/admin.html:18 templates/person.html:28
+msgid "Administration"
+msgstr "Administración"
+
+#: templates/admin.html:47
+msgid "CATEGORIES"
+msgstr "CATEGORÍAS"
+
+#: templates/breadcrumb.html:7 templates/dashboard-friends.html:30
+#: templates/items/main-item.html:126
+msgid "Empty"
+msgstr "Sin elementos"
+
+#: templates/catalog-movies-category.html:5 templates/movies-options.html:27
+msgid "Category"
+msgstr "Categoría"
+
+#: templates/catalog-movies-category.html:15
+#: templates/catalog-movies-estrenos.html:15
+#: templates/catalog-movies-favourites.html:15
+#: templates/catalog-movies-ignored.html:17
+#: templates/catalog-movies-recommendations.html:17
+#: templates/catalog-movies-votes.html:17
+#: templates/catalog-movies-wishlist.html:21 templates/catalog-movies.html:25
+#: templates/search.html:18
+msgid "Total movies found"
+msgstr "Total de películas encontradas"
+
+#: templates/catalog-movies-category.html:35 templates/catalog-movies.html:45
+msgid "Categories"
+msgstr "Categorías"
+
+#: templates/catalog-movies-estrenos.html:5
+#: templates/catalog-movies-estrenos.html:13
+#: templates/catalog-movies-submenu.html:6 views/catalog.py:291
+msgid "Now playing in cinemas"
+msgstr "Estrenos"
+
+#: templates/catalog-movies-estrenos.html:21
+msgid "Released on "
+msgstr "Fecha de lanzamiento"
+
+#: templates/catalog-movies-favourites.html:5
+#: templates/catalog-movies-favourites.html:13
+#: templates/catalog-movies-submenu.html:15 views/catalog.py:146
+msgid "Favourites"
+msgstr "Favoritas"
+
+#: templates/catalog-movies-ignored.html:5
+#: templates/catalog-movies-ignored.html:15
+msgid "Ignored films"
+msgstr "Películas ignoradas"
+
+#: templates/catalog-movies-ignored.html:34
+msgid "In this section you will find all those items you have ignored"
+msgstr "En esta sección encontrarás todos los elementos que hayas ignorado"
+
+#: templates/catalog-movies-submenu.html:7
+msgid "Explore catalog"
+msgstr "Explorar catálogo"
+
+#: templates/catalog-movies-submenu.html:13 views/catalog.py:106
+msgid "Ignored"
+msgstr "Ignoradas"
+
+#: templates/catalog-movies-submenu.html:14
+msgid "Voted"
+msgstr "Votadas"
+
+#: templates/catalog-movies-submenu.html:16
+msgid "My films"
+msgstr "Mis películas"
+
+#: templates/catalog-movies-votes.html:5
+#: templates/catalog-movies-votes.html:15 views/catalog.py:195
+msgid "Last voted"
+msgstr "Últimas votadas"
+
+#: templates/catalog-movies-votes.html:36
+msgid "In this section you will find all those items you have voted in the past"
+msgstr "En esta sección encontrarás todos los elementos que has votado en el pasado"
+
+#: templates/catalog-movies-wishlist.html:11
+msgid "All movies in this section will be removed once they have voted or ruled out."
+msgstr "Todas las películas en esta sección se eliminarán una vez las votes o las descartes."
+
+#: templates/catalog-movies-wishlist.html:28
+msgid "You do not have any movie in your wishlist"
+msgstr "No tienes ninguna película en tu lista de seguimiento"
+
+#: templates/catalog-movies.html:23 templates/main-layout.html:127
+#: views/catalog.py:63 views/catalog.py:105 views/catalog.py:145
+#: views/catalog.py:194 views/catalog.py:262 views/catalog.py:290
+#: views/catalog.py:339 views/catalog.py:399 views/catalog.py:450
+#: views/views.py:145 views/views.py:195
+msgid "Movies"
+msgstr "Películas"
+
+#: templates/contact.html:9 templates/main-layout.html:153
+msgid "Contact us"
+msgstr "Contáctanos"
+
+#: templates/contact.html:15 templates/dashboard-profile.html:39
+#: templates/home.html:42
+msgid "Name"
+msgstr "Nombre"
+
+#: templates/contact.html:20 templates/dashboard-profile.html:45
+#: templates/users/reset.html:15
+msgid "E-mail"
+msgstr "E-mail"
+
+#: templates/contact.html:25
+msgid "Type"
+msgstr "Tipo"
+
+#: templates/contact.html:28
+msgid "Query"
+msgstr "Consulta"
+
+#: templates/contact.html:29
+msgid "Bug"
+msgstr "Error"
+
+#: templates/contact.html:30
+msgid "Other"
+msgstr "Otros"
+
+#: templates/contact.html:34
+msgid "Description"
+msgstr "Descripción"
+
+#: templates/contact.html:39 templates/users/profile-avatar.html:43
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/contact.html:40
+msgid "Send"
+msgstr "Enviar"
+
+#: templates/dashboard-friends.html:5 templates/dashboard-layout.html:5
+#: templates/dashboard-lists.html:5 templates/dashboard-soulmates.html:5
+#: templates/dashboard.html:5 templates/events.html:5
+#: templates/main-layout.html:122
+msgid "Dashboard"
+msgstr "Tablero"
+
+#: templates/dashboard-friends.html:10
+msgid "Add a new friend"
+msgstr "Añadir un nuevo amigo"
+
+#: templates/dashboard-friends.html:14 templates/main-layout.html:136
+#: views/catalog.py:400
+msgid "Search"
+msgstr "Búsqueda"
+
+#: templates/dashboard-friends.html:19 templates/search.html:23
+msgid "Sorry, we did not found anything"
+msgstr "Lo sentimos, no hemos encontrado nada"
+
+#: templates/dashboard-friends.html:39 templates/dashboard-friends.html:59
+#: templates/dashboard-soulmates.html:30 templates/dashboard.html:61
+#: templates/main-layout.html:75
+msgid "Your friends"
+msgstr "Tus amigos"
+
+#: templates/dashboard-friends.html:52 templates/dashboard-friends.html:72
+#: templates/dashboard-soulmates.html:43
+msgid "In this section you will find all your friends once you have added any"
+msgstr "En esta sección encontrarás todos tus amigos una vez los hayas añadido"
+
+#: templates/dashboard-layout.html:12 templates/dashboard.html:26
+#: templates/events.html:9
+msgid "Recent activity"
+msgstr "Actividad reciente"
+
+#: templates/dashboard-layout.html:13
+msgid "Lists"
+msgstr "Listas"
+
+#: templates/dashboard-layout.html:14
+msgid "Friends"
+msgstr "Amigos"
+
+#: templates/dashboard-layout.html:15 templates/dashboard-soulmates.html:10
+#: templates/dashboard.html:44
+msgid "Soulmates"
+msgstr "Usuarios afines"
+
+#: templates/dashboard-layout.html:16
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/dashboard-lists.html:12 templates/main-layout.html:76
+msgid "Your lists"
+msgstr "Tus listas"
+
+#: templates/dashboard-lists.html:15
+msgid "Go to"
+msgstr "Ir a"
+
+#: templates/dashboard-lists.html:27
+msgid "Select one of your lists"
+msgstr "Selecciona una de tus listas"
+
+#: templates/dashboard-lists.html:61
+msgid "You do not have any list yet"
+msgstr "No tienes ninguna lista aún"
+
+#: templates/dashboard-profile.html:5
+msgid "User profile"
+msgstr "Perfil de usuario"
+
+#: templates/dashboard-profile.html:18
+msgid "Preferences saved"
+msgstr "Preferencias guardadas"
+
+#: templates/dashboard-profile.html:31
+msgid "Modify avatar"
+msgstr "Modificar avatar"
+
+#: templates/dashboard-profile.html:42 templates/home.html:47
+msgid "Surname"
+msgstr "Apellido"
+
+#: templates/dashboard-profile.html:48 templates/home.html:52
+msgid "Gender"
+msgstr "Género"
+
+#: templates/dashboard-profile.html:51 templates/home.html:55
+msgid "male"
+msgstr "Hombre"
+
+#: templates/dashboard-profile.html:52 templates/home.html:56
+msgid "female"
+msgstr "Mujer"
+
+#: templates/dashboard-profile.html:56 templates/home.html:59
+msgid "Birthdate"
+msgstr "Fecha de Nacimiento"
+
+#: templates/dashboard-profile.html:61
+msgid "Registered on"
+msgstr "Fecha de registro"
+
+#: templates/dashboard-profile.html:65
+msgid "Save profile info"
+msgstr "Guardar información de perfil"
+
+#: templates/dashboard-profile.html:78
+msgid "Connect with your Facebook account"
+msgstr "Conéctate con tu cuenta de Facebook"
+
+#: templates/dashboard-profile.html:79
+msgid "Why you should do this? If you connect with your Facebook account, you will be able to:"
+msgstr "¿Por qué debería hacerlo? Si te conectas con tu cuenta de Facebook, serás capaz de:"
+
+#: templates/dashboard-profile.html:81
+msgid "Import your profile and avatar"
+msgstr "Importa tu perfil y avatar"
+
+#: templates/dashboard-profile.html:82
+msgid "Find friends that use Likees on your Facebook contact list"
+msgstr "Buscar amigos que utilizan Likees en su lista de contactos de Facebook"
+
+#: templates/dashboard-profile.html:83
+msgid "Publish in your Facebook's wall your Likees activity"
+msgstr "Publicar en tu actividad de Likees en el muro de Facebook"
+
+#: templates/dashboard-profile.html:86
+msgid "Your current status:"
+msgstr "Tu estado actual:"
+
+#: templates/dashboard-profile.html:92
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: templates/dashboard-profile.html:94
+msgid "Language"
+msgstr "Idioma"
+
+#: templates/dashboard-profile.html:95
+msgid "Sets the Likees navegation language"
+msgstr "Establece el idioma de navegación Likees"
+
+#: templates/dashboard-profile.html:106
+msgid "Time zone"
+msgstr "Zona horaria"
+
+#: templates/dashboard-profile.html:107
+msgid "Sets your time zone prefence"
+msgstr "Ajusta tu zona horaria"
+
+#: templates/dashboard-profile.html:119
+msgid "Privacy options"
+msgstr "Opciones de privacidad"
+
+#: templates/dashboard-profile.html:122
+msgid "Events"
+msgstr "Eventos"
+
+#: templates/dashboard-profile.html:123
+msgid "Post every event to my followers"
+msgstr "Publicar todos los eventos a mis seguidores"
+
+#: templates/dashboard-profile.html:132
+msgid "Mail notifications"
+msgstr "Notificaciones de correo"
+
+#: templates/dashboard-profile.html:133
+msgid "Get mail notifications"
+msgstr "Recibe notificaciones por correo"
+
+#: templates/dashboard-profile.html:143
+msgid "Facebook options"
+msgstr "Opciones de Facebook"
+
+#: templates/dashboard-profile.html:145
+msgid "Post votes to my Facebook wall"
+msgstr "Publicar votos en mi muro de Facebook"
+
+#: templates/dashboard-profile.html:153
+msgid "Post faves to my Facebook wall"
+msgstr "Publicar favoritos en mi muro de Facebook"
+
+#: templates/dashboard-profile.html:166
+msgid "Save preferences"
+msgstr "Guardar preferencias"
+
+#: templates/dashboard-profile.html:167
+msgid "Change password"
+msgstr "Cambiar la contraseña"
+
+#: templates/dashboard-profile.html:168
+msgid "Remove account"
+msgstr "Eliminar la cuenta"
+
+#: templates/dashboard-soulmates.html:21
+msgid "In this section you will find all your soulmate once you have voted enough movies"
+msgstr "En esta sección encontrarás todos tus usuarios afines, una vez hayas  votado suficientes películas"
+
+#: templates/dashboard-soulmates.html:22
+msgid "If you don't know how to begin, <a href='/tutorial/'>click here</a> "
+msgstr "Si no sabes cómo empezar, <a href='/tutorial/'>haga clic aquí</a>"
+
+#: templates/dashboard-soulmates.html:23
+msgid "You can begin voting our <a href='/tutorial/tour/'>tours</a> "
+msgstr "Puedes comenzar votando nuestros <a href='/tutorial/tour/'>tours</a>"
+
+#: templates/dashboard.html:11
+msgid "News"
+msgstr "Notícias"
+
+#: templates/dashboard.html:33
+msgid "There isn't any event yet. Vote something, add friends, add items to your wishlist or fave them!"
+msgstr "No tienes ningún evento todavía. Vota alguna película, añade amigos, agrega elementos a su lista de pendientes o de favoritos!"
+
+#: templates/dashboard.html:37
+msgid "View all events"
+msgstr "Ver todos los eventos"
+
+#: templates/dashboard.html:55
+msgid "You have not voted enough movies, so we can't calculate your soulmates"
+msgstr "No has votado suficientes películas, así que no podemos calcular tus almas gemelas"
+
+#: templates/dashboard.html:68
+msgid "You have not added any friend yet."
+msgstr "No has añadido ningún amigo todavía."
+
+#: templates/dashboard.html:73
+msgid "View all friends"
+msgstr "Ver todos tus amigos"
+
+#: templates/dashboard.html:75
+msgid "Latest users in Likees"
+msgstr "Últimos usuarios en Likees"
+
+#: templates/home.html:7 templates/main-layout.html:125
+msgid "Home"
+msgstr "Página de inicio"
+
+#: templates/home.html:15 templates/list-tours.html:23
+#: templates/tutorial.html:22
+msgid "noscript"
+msgstr ""
+"La página que estás viendo requiere para su funcionamiento el uso de JavaScript. \n"
+"Si lo has deshabilitado intencionadamente, por favor vuelve a activarlo."
+
+#: templates/home.html:28
+msgid "<a href=\"/new/\">View more...</a>"
+msgstr "<a href=\"/new/\">Ver más ...</a>"
+
+#: templates/home.html:33
+msgid "Sign in"
+msgstr "Registrarse"
+
+#: templates/home.html:37
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: templates/home.html:80
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: templates/home.html:85 templates/main-layout.html:103
+#: templates/users/login.html:27
+msgid "Password"
+msgstr "Contraseña"
+
+#: templates/home.html:90
+msgid "Register"
+msgstr "Registrarse"
+
+#: templates/home.html:97
+msgid "What is Likees?"
+msgstr "¿Qué es Likees?"
+
+#: templates/home.html:98
+msgid "Likees is a movie-oriented social network. You can browse movies, rate them and discover new ones, by matching your tastes with other registered users'."
+msgstr "Likees es una red social de películas. Puedes ver películas, a ritmo y descubrir otras nuevas, haciendo coincidir tus gustos con otros usuarios registrados."
+
+#: templates/home.html:100
+msgid "How does Likees work?"
+msgstr "¿Cómo funciona Likees?"
+
+#: templates/home.html:101
+msgid "We calculate affinity among our user base. Based on these calculations, we recommend you movies that you haven't rated so far."
+msgstr "Calculamos afinidad en nuestra base de usuarios. Con base a estos cálculos, te recomendámos películas que no has votado hasta ahora."
+
+#: templates/home.html:103
+msgid "What do Likees offer?"
+msgstr "¿Qué te ofrece Likees?"
+
+#: templates/home.html:104
+msgid "Browse the catalogue, rate movies you've seen, add those you haven't to your watchlist, create custom lists, and share your votes and taste on Facebook, Twitter, ..."
+msgstr "Consultar el catálogo, valora las películas que hayas visto, apúntate las que no no hayas visto, créate listas personalizadas, y comparte tus votos y gustos en Facebook, Twitter, ..."
+
+#: templates/home.html:112
+msgid "Explore"
+msgstr "Explorar"
+
+#: templates/home.html:113
+msgid "Explore our <a href=\"/movies\">catalog</a>."
+msgstr "Explora nuestro <a href=\"movies/\">catálogo</a> ."
+
+#: templates/home.html:116
+msgid "Sign in & Rate"
+msgstr "Regístrate y vota"
+
+#: templates/home.html:117
+msgid "Vote movies, add them to faves or ignore them from your searches and catalog."
+msgstr "Vota películas, agrégalas a favoritos o ignórarlas de las búsquedas y el catálogo."
+
+#: templates/home.html:120
+msgid "Discover"
+msgstr "Descubrir"
+
+#: templates/home.html:121
+msgid "Discover new films and add them to your \"I want watch\" list. This is your list of pendent watching films."
+msgstr "Descubre nuevas películas y añádelas a la lista de pendiente de ver. "
+
+#: templates/home.html:130
+msgid "Rate movies ..."
+msgstr "Vota películas..."
+
+#: templates/home.html:134
+msgid "... or add them to your watchlist"
+msgstr "... o agregarlas a tu lista de seguimiento"
+
+#: templates/list-tours.html:5
+msgid "Tutorial"
+msgstr "Tutorial"
+
+#: templates/list-tours.html:12 templates/tutorial.html:12
+msgid "Help"
+msgstr "Ayuda"
+
+#: templates/list-tours.html:13 templates/tutorial.html:13
+msgid "Tours"
+msgstr "Tours"
+
+#: templates/list-tours.html:27 templates/main-layout.html:123
+#: templates/tutorial.html:5 templates/tutorial.html.py:26
+#: views/tutorial.py:80
+msgid "Getting started"
+msgstr "Primeros pasos"
+
+#: templates/list-tours.html:28
+msgid "Likees needs some information about your movie tastes to offer you the best movie recommendations. Vote our tours and you will find more and better soulmates."
+msgstr "Likees necesita un poco de información acerca de tus gustos de películas para ofrecerte las mejores recomendaciones. Vota nuestros tours y nuestras recomendaciones serán mejores."
+
+#: templates/main-layout.html:74
+msgid "Log out"
+msgstr "Cerrar sesión"
+
+#: templates/main-layout.html:99 templates/users/login.html:23
+msgid "Username or email"
+msgstr "Nombre de usuario"
+
+#: templates/main-layout.html:107 templates/users/login.html:32
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: templates/main-layout.html:135
+msgid "Search movies, actors, ..."
+msgstr "Buscar películas, actores, ..."
+
+#: templates/main-layout.html:153
+msgid "Copyright 2011 Likees. All Rights Reserved"
+msgstr "Copyright © 2011 Likees. Todos los derechos reservados"
+
+#: templates/main-layout.html:154
+msgid "Version"
+msgstr "Versión"
+
+#: templates/movies-options.html:6
+msgid "Options"
+msgstr "Opciones"
+
+#: templates/movies-options.html:6
+msgid "Filters and other visualization options..."
+msgstr "Filtros y otras opciones de visualización ..."
+
+#: templates/movies-options.html:17 templates/items/main-item.html:80
+msgid "Released on"
+msgstr "Lanzamiento"
+
+#: templates/movies-options.html:22 templates/dynjs/language.html:15
+#, python-format
+msgid "From %(fromyear)s to %(toyear)s"
+msgstr "Desde %(fromyear)s hasta %(toyear)s "
+
+#: templates/movies-options.html:30
+msgid "All"
+msgstr "Todas"
+
+#: templates/movies-options.html:36
+msgid "Order by"
+msgstr "Ordenar por"
+
+#: templates/movies-options.html:38
+msgid "Best rate"
+msgstr "Mejor valoración"
+
+#: templates/movies-options.html:39
+msgid "Worst rate"
+msgstr "Peor valoradas"
+
+#: templates/movies-options.html:40
+msgid "Newest first"
+msgstr "Lo nuevo primero"
+
+#: templates/movies-options.html:41
+msgid "Oldest first"
+msgstr "Los más viejo primero"
+
+#: templates/movies-options.html:43
+msgid "Filter"
+msgstr "Filtrar"
+
+#: templates/movies-options.html:48
+msgid "Exclude voted films"
+msgstr "Excluir películas votadas"
+
+#: templates/movies-options.html:59
+msgid "Total movies loaded"
+msgstr "Total de películas cargadas"
+
+#: templates/movies-options.html:62
+msgid "Item size"
+msgstr "Tamaño del item"
+
+#: templates/movies-options.html:63
+msgid "Small size"
+msgstr "Pequeño"
+
+#: templates/movies-options.html:64
+msgid "Medium size"
+msgstr "Mediano"
+
+#: templates/movies-options.html:65
+msgid "Huge size"
+msgstr "Grande"
+
+#: templates/movies-options.html:68
+msgid "Distribution"
+msgstr "Distribución"
+
+#: templates/movies-options.html:69
+msgid "Show movies in rows distribution"
+msgstr "Mostrar películas distribuidas por filas"
+
+#: templates/movies-options.html:69
+msgid "Rows"
+msgstr "Filas"
+
+#: templates/movies-options.html:70
+msgid "Show movies in thumbs distribution"
+msgstr "Mostrar películas distribuidas por carátulas"
+
+#: templates/movies-options.html:70
+msgid "Thumbs"
+msgstr "Carátulas"
+
+#: templates/paginator.html:5
+msgid "First"
+msgstr "Primera"
+
+#: templates/paginator.html:7
+msgid "Previous"
+msgstr "Anterior"
+
+#: templates/paginator.html:12
+#, python-format
+msgid ""
+"\n"
+"                Page %(number)s of %(num_pages)s\n"
+"                "
+msgstr ""
+"\n"
+"Página %(number)s de %(num_pages)s "
+
+#: templates/paginator.html:19
+msgid "Next"
+msgstr "Siguiente"
+
+#: templates/paginator.html:21
+msgid "Last"
+msgstr "Última"
+
+#: templates/paginator.html:24
+msgid "Go to page"
+msgstr "Ir a la página"
+
+#: templates/person.html:54
+msgid "Star in"
+msgstr "Protagonista en"
+
+#: templates/ratedetail.html:10
+msgid "Votes detail"
+msgstr "Obtener detalles de la calificación"
+
+#: templates/search.html:11
+msgid "Search results"
+msgstr "Resultados de la búsqueda"
+
+#: templates/search.html:45
+msgid "People"
+msgstr "Actores"
+
+#: templates/search.html:51
+msgid "View more"
+msgstr "Ver más"
+
+#: templates/search.html:54
+msgid "No results"
+msgstr "No hay resultados"
+
+#: templates/tutorial.html:31
+msgid "Rate movies."
+msgstr "Vota las películas."
+
+#: templates/tutorial.html:33
+msgid "The more we know about the movies you like, the better our recommendations will be. You can start by going through our <a href='/tutorial/tour/'>tours.</a>"
+msgstr "Cuanto más sepamos acerca de las películas que te gustan, mejor serán nuestras recomendaciones. Puedes empezar por ir a través de nuestros <a href='/tutorial/tour/'>tours.</a>"
+
+#: templates/tutorial.html:38
+msgid "Complete your profile info."
+msgstr "Completa tu información de perfil"
+
+#: templates/tutorial.html:40
+msgid "Your gender and your age are extra pieces of information that can be taken into account when providing recommendations. Go complete your <a href='/accounts/profile'>profile</a>!"
+msgstr "Tu sexo y tu edad son piezas de información adicional que se pueden tomar en cuenta al calcular recomendaciones. Completa tu <a href='/accounts/profile'>perfil</a> !"
+
+#: templates/tutorial.html:45
+msgid "Browse recommendations."
+msgstr "Examina las recomendaciones."
+
+#: templates/tutorial.html:47
+msgid "Browse the recommendations we provide, add movies to your watchlist or to any custom list."
+msgstr "Examina las recomendaciones que te ofrecemos, añade películas a tu lista de seguimiento o de cualquier lista personalizada."
+
+#: templates/userdetail.html:31 templates/dynjs/language.html:13
+#: templates/users/infotip.html:23 templates/users/mini-lastest-user.html:26
+msgid "Remove from friends"
+msgstr "Borrar de amigos"
+
+#: templates/userdetail.html:33 templates/dynjs/language.html:12
+#: templates/users/infotip.html:25 templates/users/mini-lastest-user.html:28
+msgid "Add to friends"
+msgstr "Agregar a los amigos"
+
+#: templates/userdetail.html:39
+msgid "Favorite movies"
+msgstr "Películas favoritas"
+
+#: templates/userdetail.html:50
+msgid "This user has choose any favourite film"
+msgstr "Este usuario no tiene ninguna película favorita"
+
+#: templates/userdetail.html:57
+msgid "Last movies voted"
+msgstr "Últimas películas votadas"
+
+#: templates/userdetail.html:60
+msgid "Movies voted:"
+msgstr "Películas votadas:"
+
+#: templates/userdetail.html:83
+msgid "This user has not voted any film"
+msgstr "Este usuario no ha votado ninguna película"
+
+#: templates/dynjs/language.html:3 templates/items/main-item.html:49
+#: templates/items/row-item-list.html:12 templates/items/row-item.html:92
+msgid "Add to faves"
+msgstr "Añadir a favoritos"
+
+#: templates/dynjs/language.html:4 templates/items/main-item.html:47
+#: templates/items/row-item-list.html:10 templates/items/row-item.html:90
+msgid "Delete from faves"
+msgstr "Eliminar de favoritos"
+
+#: templates/dynjs/language.html:6 templates/items/main-item.html:55
+#: templates/items/row-item-list.html:18 templates/items/row-item.html:98
+msgid "Add to wishlist"
+msgstr "Agregar a pendientes de ver"
+
+#: templates/dynjs/language.html:7 templates/items/main-item.html:53
+#: templates/items/row-item-list.html:16 templates/items/row-item.html:96
+msgid "Delete from wishlist"
+msgstr "Eliminar de pendientes de ver"
+
+#: templates/dynjs/language.html:9 templates/items/main-item.html:61
+#: templates/items/row-item-ignored.html:12 templates/items/row-item.html:104
+msgid "Ignore"
+msgstr "Ignorar"
+
+#: templates/dynjs/language.html:10 templates/items/main-item.html:59
+#: templates/items/row-item-ignored.html:10 templates/items/row-item.html:102
+msgid "Stop ignoring"
+msgstr "Dejar de ignorar"
+
+#: templates/dynjs/language.html:17
+msgid "What is the tag name?"
+msgstr "¿Cuál es el nombre de la etiqueta?"
+
+#: templates/dynjs/language.html:18
+msgid "Cancel rating"
+msgstr "Cancelar puntuación"
+
+#: templates/dynjs/language.html:20
+msgid "Has voted {movie} with {value}"
+msgstr "Ha votado {movie} con {value}"
+
+#: templates/dynjs/language.html:21
+msgid "Has chosen {movie} as favorite movie"
+msgstr "Ha marcado {movie} como película favorita"
+
+#: templates/dynjs/language.html:22
+msgid "Likees is a social network where you can vote movies, add them to faves and get recommendation from other users."
+msgstr "Likees es una red social donde puedes votar películas, añadirlas a favoritos y obtener recomendaciones de otros usuarios."
+
+#: templates/events/row-event.html:16
+#, python-format
+msgid ""
+"\n"
+"            You have voted <a href=\"/item/%(itemid)s\">%(itemname)s</a> with %(value)s.\n"
+"            "
+msgstr ""
+"\n"
+"Has votado <a href=\"/item/%(itemid)s\"> %(itemname)s </a> con %(value)s ."
+
+#: templates/events/row-event.html:20
+#, python-format
+msgid ""
+"\n"
+"            <a href=\"/user/%(username)s\">%(username)s</a> has voted <a href=\"/item/%(itemid)s\">%(itemname)s</a> with %(value)s.\n"
+"            "
+msgstr ""
+"\n"
+"<a href=\"/user/%(username)s\"> %(username)s </a> ha votado <a href=\"/item/%(itemid)s\"> %(itemname)s </a> con %(value)s ."
+
+#: templates/events/row-event.html:27
+#, python-format
+msgid ""
+"\n"
+"            You added <a href=\"/item/%(itemid)s\">%(itemname)s</a> to your wish list.\n"
+"            "
+msgstr ""
+"\n"
+"Has añadido <a href=\"/item/%(itemid)s\"> %(itemname)s </a> de su lista de pendientes de ver."
+
+#: templates/events/row-event.html:31
+#, python-format
+msgid ""
+"\n"
+"            <a href=\"/user/%(username)s\">%(username)s</a> added <a href=\"/item/%(itemid)s\">%(itemname)s</a> to his/her watch list.\n"
+"            "
+msgstr ""
+"\n"
+"<a href=\"/user/%(username)s\"> %(username)s </a> agregó <a href=\"/item/%(itemid)s\"> %(itemname)s </a> de su lista de pendientes de ver."
+
+#: templates/events/row-event.html:38
+#, python-format
+msgid ""
+"\n"
+"            You added a critic to <a href=\"/item/%(itemid)s\">%(itemname)s</a>.\n"
+"            "
+msgstr ""
+"\n"
+"Has añadido una crítica a <a href=\"/item/%(itemid)s\"> %(itemname)s</a>"
+
+#: templates/events/row-event.html:42
+#, python-format
+msgid ""
+"\n"
+"            <a href=\"/user/%(username)s\">%(username)s</a> added a critic to <a href=\"/item/%(itemid)s\">%(itemname)s</a>.\n"
+"            "
+msgstr ""
+"\n"
+"<a href=\"/user/%(username)s\"> %(username)s </a> agregó <a href=\"/item/%(itemid)s\"> %(itemname)s </a> como favorito."
+
+#: templates/events/row-event.html:49
+#, python-format
+msgid ""
+"\n"
+"            You added <a href=\"/item/%(itemid)s\">%(itemname)s</a> as a favourite item.\n"
+"            "
+msgstr ""
+"\n"
+"Has añadido <a href=\"/item/%(itemid)s\"> %(itemname)s </a> como favorito."
+
+#: templates/events/row-event.html:53
+#, python-format
+msgid ""
+"\n"
+"            <a href=\"/user/%(username)s\">%(username)s</a> added <a href=\"/item/%(itemid)s\">%(itemname)s</a> as a favourite item.\n"
+"            "
+msgstr ""
+"\n"
+"<a href=\"/user/%(username)s\"> %(username)s </a> agregó <a href=\"/item/%(itemid)s\"> %(itemname)s </a> como un favorito."
+
+#: templates/events/row-event.html:60
+#, python-format
+msgid ""
+"\n"
+"            You added <a href=\"/user/%(value)s\">%(value)s</a> as friend.\n"
+"            "
+msgstr ""
+"\n"
+"Has añadido <a href=\"/user/%(value)s\"> %(value)s </a> como amigo."
+
+#: templates/events/row-event.html:64
+#, python-format
+msgid ""
+"\n"
+"            <a href=\"/user/%(username)s\">%(username)s</a> added <a href=\"/user/%(value)s\">%(value)s</a> as friend.\n"
+"            "
+msgstr ""
+"\n"
+"<a href=\"/user/%(username)s\"> %(username)s </a> agregó <a href=\"/user/%(value)s\"> %(value)s </a> como amigo."
+
+#: templates/items/flat-row-item.html:11
+msgid "User rate"
+msgstr "Puntuación del usuario"
+
+#: templates/items/flat-row-item.html:13 templates/items/main-item.html:11
+#: templates/items/row-item.html:26
+msgid "Unrated"
+msgstr "Sin valorar"
+
+#: templates/items/flat-row-item.html:19 templates/items/main-item.html:66
+#: templates/items/row-item.html:15
+msgid "Watch the trailer"
+msgstr "Mirar el trailer"
+
+#: templates/items/flat-row-item.html:24 templates/items/row-item.html:64
+msgid "More"
+msgstr "Más información"
+
+#: templates/items/main-item.html:9 templates/items/row-item.html:24
+msgid "Get rate details"
+msgstr "Obtener detalles de la calificación"
+
+#: templates/items/main-item.html:20
+msgid "Directed by"
+msgstr "Dirigida por"
+
+#: templates/items/main-item.html:31
+msgid "Genres"
+msgstr "Géneros"
+
+#: templates/items/main-item.html:75
+msgid "Original title"
+msgstr "Título original"
+
+#: templates/items/main-item.html:85
+msgid "Duration"
+msgstr "Duración"
+
+#: templates/items/main-item.html:90
+msgid "Buy links"
+msgstr "Enlaces de compra"
+
+#: templates/items/main-item.html:96
+msgid "Rating"
+msgstr "Clasificación"
+
+#: templates/items/main-item.html:102
+msgid "Homepage"
+msgstr "Página de inicio"
+
+#: templates/items/main-item.html:107
+msgid "Produced by"
+msgstr "Producida por"
+
+#: templates/items/main-item.html:118
+msgid "Cast"
+msgstr "Reparto"
+
+#: templates/items/main-item.html:133
+msgid "Companies"
+msgstr "Empresas"
+
+#: templates/items/main-item.html:143
+msgid "Overview"
+msgstr "Sinopsis"
+
+#: templates/items/main-item.html:156
+msgid "Friends that saw this film"
+msgstr "Amigos que vieron esta película"
+
+#: templates/items/main-item.html:170
+msgid "No friend has seen this movie"
+msgstr "Ningún amigo ha visto esta película"
+
+#: templates/items/main-item.html:174
+msgid "Users that voted this film"
+msgstr "Los usuarios que han votado esta película"
+
+#: templates/items/main-item.html:188
+msgid "No user has seen this movie"
+msgstr "Ningún usuario ha visto esta película"
+
+#: templates/items/main-item.html:193
+msgid "This film belongs to the lists"
+msgstr "Esta película pertenece a las listas"
+
+#: templates/items/main-item.html:205
+msgid "Create new tag"
+msgstr "Crear nueva etiqueta"
+
+#: templates/items/main-item.html:211
+msgid "Film critics"
+msgstr "Críticas"
+
+#: templates/items/main-item.html:214
+msgid "No user has commented about this movie"
+msgstr "Ningún usuario ha comentado la película"
+
+#: templates/items/main-item.html:237
+msgid "Add to critics"
+msgstr "Añadir a las críticas"
+
+#: templates/items/row-item-list.html:21
+msgid "Delete from list"
+msgstr "Eliminar de la lista"
+
+#: templates/items/row-item.html:35
+msgid "Director"
+msgstr "Director"
+
+#: templates/items/row-item.html:71
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: templates/items/row-item.html:82
+msgid "None"
+msgstr "Ninguna"
+
+#: templates/items/row-item.html:133
+msgid "Moderate"
+msgstr "Moderar"
+
+#: templates/items/row-item.html:148
+msgid "Update"
+msgstr "Actualizar"
+
+#: templates/preferences/preference-boolean-ask.html:8
+#: templates/preferences/preference-boolean.html:8
+msgid "Yes"
+msgstr "Sí"
+
+#: templates/preferences/preference-boolean-ask.html:9
+#: templates/preferences/preference-boolean.html:9
+msgid "No"
+msgstr "No"
+
+#: templates/preferences/preference-boolean-ask.html:10
+msgid "Ask"
+msgstr "Preguntar"
+
+#: templates/users/change.html:25
+msgid "Old password"
+msgstr "Contraseña antigua"
+
+#: templates/users/change.html:32
+msgid "New password"
+msgstr "Nueva contraseña"
+
+#: templates/users/change.html:38
+msgid "Confirm password"
+msgstr "Confirmar contraseña"
+
+#: templates/users/change.html:45
+msgid "Modify password"
+msgstr "Modificar la contraseña"
+
+#: templates/users/change.html:47
+msgid "Back to profile"
+msgstr "Volver al perfil"
+
+#: templates/users/change.html:56
+msgid "Passwords must match!"
+msgstr "Las contraseñas deben coincidir!"
+
+#: templates/users/login-inactive.html:11
+msgid "Your account is inactive. Please, check your mail and validate your account with the link attached in it"
+msgstr "Tu cuenta está inactiva. Por favor, revisa tu correo y valida tu cuenta con el enlace adjunto"
+
+#: templates/users/login-inactive.html:32
+#: templates/users/login-incorrect.html:32 templates/users/login.html:35
+msgid "I forgot my password"
+msgstr "He olvidado mi contraseña"
+
+#: templates/users/login-incorrect.html:11
+msgid "Username or password invalid. Please, try again"
+msgstr "Nombre de usuario o contraseña no válidos. Por favor, inténtalo de nuevo"
+
+#: templates/users/login-passchanged.html:11
+msgid "Your password has been updated successfully."
+msgstr "Tu contraseña se ha actualizado con éxito."
+
+#: templates/users/mail-newfollow.html:7
+#, python-format
+msgid ""
+"\n"
+"<a href=\"http://www.likees.org/user/%(friend)s/\">%(friend)s</a> has added you as a follower on Likees, <span class=\"username\">%(username)s</span>. \n"
+msgstr ""
+"\n"
+"<a href=\"http://www.likees.org/user/%(friend)s/\"> %(friend)s </a> te ha añadido como amigo en <span class=\"username\">Likees, %(username)s .</span>\n"
+
+#: templates/users/mail-recover-password.html:7
+#: templates/users/mail-register.html:7
+#, python-format
+msgid ""
+"\n"
+"Welcome to Likees, <span class=\"username\">%(username)s</span>. \n"
+msgstr ""
+"\n"
+"Bienvenido a <span class=\"username\">Likees, %(username)s .</span>\n"
+
+#: templates/users/mail-recover-password.html:12
+msgid ""
+"\n"
+"We have received your request to reset your password for your account.\n"
+msgstr ""
+"\n"
+"Hemos recibido tu solicitud para restablecer la contraseña de tu cuenta.\n"
+
+#: templates/users/mail-recover-password.html:17
+msgid ""
+"\n"
+"Follow this link to complete de process\n"
+msgstr ""
+"\n"
+"Sigue este enlace para completar el proceso\n"
+
+#: templates/users/mail-register.html:12
+msgid ""
+"\n"
+"We hope you find useful this amazing site. \n"
+msgstr ""
+"\n"
+"Esperamos que encuentres útil este increíble sitio.\n"
+
+#: templates/users/mail-register.html:17
+msgid ""
+"\n"
+"Validate your registration with this link\n"
+msgstr ""
+"\n"
+"Valida tu registro en el siguiente enlace\n"
+
+#: templates/users/mini-lastest-user.html:19
+msgid ""
+"\n"
+"    You have an affinity about %(score)s%\n"
+"    "
+msgstr ""
+"\n"
+"Tienes una afinidad alrededor del %(score)s%"
+
+#: templates/users/profile-avatar.html:8
+msgid "Choose your avatar option"
+msgstr "Elige cómo cargar tu avatar"
+
+#: templates/users/profile-avatar.html:14
+msgid "Load from Gravatar.com"
+msgstr "Cargar avatar desde Gravatar.com"
+
+#: templates/users/profile-avatar.html:15
+msgid "What is Gravatar?"
+msgstr "¿Qué es Gravatar?"
+
+#: templates/users/profile-avatar.html:17
+msgid "Avatar from Gravatar"
+msgstr "Avatar de Gravatar"
+
+#: templates/users/profile-avatar.html:22
+msgid "Load from your Facebook profile"
+msgstr "Carga tu perfil de Facebook"
+
+#: templates/users/profile-avatar.html:25
+msgid "Your facebook profile picture"
+msgstr "Tu imagen de perfil en Facebook"
+
+#: templates/users/profile-avatar.html:30
+msgid "Upload a picture..."
+msgstr "Subir una foto ..."
+
+#: templates/users/profile-avatar.html:36
+msgid "Accepted image formats: JPG, PNG, Non animated GIF"
+msgstr "Los formatos admitidos de imagen: JPG, PNG, GIF no animado"
+
+#: templates/users/profile-avatar.html:44
+msgid "Accept"
+msgstr "Aceptar"
+
+#: templates/users/register-sendmail.html:7
+#: templates/users/register-validationok.html:7
+#, python-format
+msgid ""
+"\n"
+"Congratulations <b>%(username)s</b>!!\n"
+msgstr ""
+"\n"
+"<b>Felicidades %(username)s !</b>\n"
+
+#: templates/users/register-sendmail.html:12
+msgid ""
+"\n"
+"We sent a mail to your address. To complete the registration process, read the mail and follow the instructions\n"
+msgstr ""
+"\n"
+"Te acabamos de enviar un correo electrónico a tu dirección. Para completar el proceso de registro, lee el correo y sigue las instrucciones\n"
+
+#: templates/users/register-validationko.html:7
+msgid ""
+"\n"
+"Validation process has failed. Please, try again.\n"
+msgstr ""
+"\n"
+"El proceso de validación ha fallado. Por favor, inténtalo de nuevo.\n"
+
+#: templates/users/register-validationok.html:12
+msgid ""
+"\n"
+"You complete the registration process!!\n"
+msgstr ""
+"\n"
+"Has completado el proceso de registro!\n"
+
+#: templates/users/reset-ok.html:11
+msgid "Check your e-mail and follow the instructions to reset your password"
+msgstr "Introduce tu dirección de e-mail y sigue las instrucciones que recibirás por correo electrónico"
+
+#: templates/users/reset.html:10
+msgid "Enter your e-mail adress to change your password"
+msgstr "Introduce tu dirección de e-mail para cambiar tu  contraseña"
+
+#: templates/users/reset.html:16
+msgid "Reset"
+msgstr "Restablecer"
+
+#: templatetags/likeestags.py:25
+#, python-format
+msgid "%(c)s second ago"
+msgid_plural "%(c)s seconds ago"
+msgstr[0] "Hace %(c)s segundo"
+msgstr[1] "Hace %(c)s segundos"
+
+#: templatetags/likeestags.py:27
+#, python-format
+msgid "%(m)s minute ago"
+msgid_plural "%(m)s minutes ago"
+msgstr[0] "Hace %(m)s minuto"
+msgstr[1] "Hace %(m)s minutos"
+
+#: templatetags/likeestags.py:29
+#, python-format
+msgid "%(h)s hour ago"
+msgid_plural "%(h)s hours ago"
+msgstr[0] "Hace %(h)s hora"
+msgstr[1] "Hace %(h)s horas"
+
+#: templatetags/likeestags.py:31
+#, python-format
+msgid "%(d)s day ago"
+msgid_plural "%(d)s days ago"
+msgstr[0] "Ayer"
+msgstr[1] "Hace %(d)s días"
+
+#: templatetags/likeestags.py:33
+#, python-format
+msgid "%(w)s week ago"
+msgid_plural "%(w)s weeks ago"
+msgstr[0] "La semana pasada"
+msgstr[1] "Hace %(w)s semanas"
+
+#: views/dashboard.py:255
+msgid "Default"
+msgstr "Por defecto"
+
+#: views/dashboard.py:255
+msgid "English"
+msgstr "Inglés"
+
+#: views/dashboard.py:255
+msgid "Spanish"
+msgstr "Español"
+
+#: views/dashboard.py:255
+msgid "French"
+msgstr "Francés"
+
+#: views/dashboard.py:255
+msgid "Reshulon"
+msgstr "Reshulon"
+
+#: views/tutorial.py:81
+msgid "Tour"
+msgstr "Tour"
+
+#: views/views.py:62
+msgid "Username only can contain characters, numbers, '.', '-' and '_'"
+msgstr "El nombre de usuario sólo puede contener caracteres, números, '.' '-' y '_'"
+
+#: views/views.py:65
+msgid "Password too short"
+msgstr "Contraseña demasiado corta"
+
+#: views/views.py:68
+msgid "E-mail address not valid"
+msgstr "Dirección de correo electrónico no válida"
+
+#: views/views.py:392
+msgid "The film you try to vote does not exists"
+msgstr "La película que intentas votar no existe"
+
+#: views/views.py:395
+msgid "Invalid punctuation"
+msgstr "Puntuación inválida"
+
+#: views/views.py:553
+msgid "Critic deleted successfully"
+msgstr "Crítica eliminada con éxito"
+
+#: views/views.py:561
+msgid "Critic added succesfully"
+msgstr "Crítica agregada con éxito"
+
+#: views/views.py:563
+msgid "Critic too short. Please, write a little more about this"
+msgstr "Crítica demasiado corta. Por favor, escribe un poco más"
+
+#: views/views.py:575 views/views.py:588
+msgid "User is not staff"
+msgstr "El usuario no pertenece al personal de mantenimiento"
+
+#~ msgid "Enter new password"
+#~ msgstr "Escribe la nueva contraseña"
+
+#~ msgid "Change"
+#~ msgstr "Cambiar"
+
+#~ msgid "Score:"
+#~ msgstr "Puntuación:"
+
+#~ msgid "has voted "
+#~ msgstr "Últimas votadas"
+
+#~ msgid "First tour: likees most voted films"
+#~ msgstr "Primer tour: películas más votadas de Likees"
+
+#~ msgid "Second tour: Films that you probably have seen"
+#~ msgstr "Segundo tour: Películas que probablemente has visto"
+
+#~ msgid "Third tour: Films that you probably have seen"
+#~ msgstr "Tercer tour: Películas que probablemente has visto"
+
+#~ msgid "We calculate affinity between all our users. We select for you recommendations based on the films that your affinity users have watched but you don't have watched them yet"
+#~ msgstr "Calculamos afinidad entre todos nuestros usuarios. Seleccionamos para ti las recomendaciones basadas en las películas que los usuarios de afinidad han visto pero tú todavía no"
+
+#~ msgid "What can we offer?"
+#~ msgstr "¿Qué podemos ofrecerte?"
+
+#~ msgid "Likees needs some info about you to offer you the best movies. Go to your <a href=\"/accounts/profile\">profile</a> and tell us about your birthdate, gender and upload an avatar"
+#~ msgstr "Likees necesita información sobre ti para ofrecerte las mejores películas. Ve a tu <a href=\"/accounts/profile\">perfil</a> y dinos cúando naciste, tu género y carga un avatar."
+
+#~ msgid "Organize"
+#~ msgstr "Organizar"
+
+#~ msgid "Explore the recommendations, and mark some films in your wishlist."
+#~ msgstr "Explora recomendaciones y márcalas pendientes para ver. "
+
+#~ msgid "The password is incorrect. Please, try again."
+#~ msgstr "La contraseña es incorrecta. Por favor, inténtalo de nuevo."
+
+#~ msgid "Your old password did not match. Please, try again"
+#~ msgstr "Tu contraseña antigua no coincide. Por favor, inténtalo de nuevo"
+
+#~ msgid "Your password did not match. Please, try again"
+#~ msgstr "Tu contraseña no coincide. Por favor, inténtalo de nuevo"
+
+#~ msgid "likees.org registration"
+#~ msgstr "Registro en likees.org "
+
+#~ msgid "likees.org password recover"
+#~ msgstr "Restablecer contraseña likees.org"
+
+#~ msgid "Notification added succesfully"
+#~ msgstr "Notificación agregada con éxito"
+
+#~ msgid "Released this week"
+#~ msgstr "Estrenadas ésta semana"
+
+#~ msgid "Loaded in Likees this week"
+#~ msgstr "Cargadas en Likees ésta semana"
+
+#~ msgid "Your soulmates recommend you"
+#~ msgstr "Tus almas gemelas te recomiendan"
+
+#~ msgid "Ignored movies"
+#~ msgstr "Películas ignoradas"
+
+#~ msgid "First tour: most voted films"
+#~ msgstr "Primer tour: las películas más votadas"
+
+#~ msgid "Actions"
+#~ msgstr "Acciones"
+
+#~ msgid "TheMovieDB rate"
+#~ msgstr "Nota TheMovieDB"
+
+#~ msgid "based on"
+#~ msgstr "basada en"
+
+#~ msgid "votes"
+#~ msgstr "votos"
+
+#~ msgid "Otros detalles de las votaciones"
+#~ msgstr "Otros detalles de las votaciones"
+
+#~ msgid "Detalle de las votaciones"
+#~ msgstr "Detalle de las votaciones"
+
+#~ msgid "Log in"
+#~ msgstr "Iniciar sesión"
+
+#~ msgid "Filters"
+#~ msgstr "Filtros"
+
+#~ msgid "Name list"
+#~ msgstr "Nombre de la lista"
+
+#~ msgid "Add"
+#~ msgstr "Agregar"
+
+#~ msgid "Hi %(username)s ! Your likees.org password has been reseted. Your new password is %(password)s . <br><br> Likees Team."
+#~ msgstr "Hola %(username)s ! Su contraseña likees.org se ha reseteado. Su nueva contraseña es %(password)s . <br><br> El equipo de Likees."
+
+#~ msgid "Language added succesfully"
+#~ msgstr "Idioma agregado con éxito"
+
+#~ msgid "Username cannot contain @ or spaces"
+#~ msgstr "Nombre de usuario no puede contener ni espacios ni @"
+
+#~ msgid ""
+#~ "\n"
+#~ "                        From %(fromyear)s to %(toyear)s\n"
+#~ "                        "
+#~ msgstr ""
+#~ "\n"
+#~ "Desde %(fromyear)s hasta %(toyear)s "

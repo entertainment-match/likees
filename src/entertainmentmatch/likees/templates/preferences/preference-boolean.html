@@ -1,0 +1,10 @@
+{% extends "preferences/preference.html" %}
+
+{% load likeestags %}
+
+{% load i18n %}
+
+{% block preference-block %}
+<input type="radio" name="{{prefname}}" value="1"{%ifequal prefvalue '1'%} checked="checked"{%endifequal%}/> {% trans 'Yes'%}
+<input type="radio" name="{{prefname}}" value="0"{%ifequal prefvalue '0'%} checked="checked"{%endifequal%}/> {% trans 'No'%}
+{% endblock %}

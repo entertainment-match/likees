@@ -1,0 +1,39 @@
+{% extends "catalog-movies.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Ignored films" %}{% endblock %}
+
+{% block contentcatalog %}
+
+    <div class="maindatacontainer">
+        
+        {% if movies.object_list %}
+
+        <div class="tablemoviesfull">
+            <div style="overflow: hidden;">
+                <h3 style="float:left">{% trans 'Ignored films' %}</h3>
+                {% if totalitems %}
+                <p style="float:right; line-height: 200%"><b>{% trans 'Total movies found'%}: </b>{{totalitems}}</p>
+                {% endif %}
+            </div>
+            
+            {% for item in movies.object_list %}
+            {% include "items/row-item.html"%}
+            {% endfor %}
+
+            {% with movies as list %}
+            {% with '/ignored/' as context %}
+            {% include "paginator.html"%}
+            {% endwith %}
+            {% endwith %}
+
+        </div>
+
+        {% else %}
+        <div class="infobox">{% trans 'In this section you will find all those items you have ignored'%}</div>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

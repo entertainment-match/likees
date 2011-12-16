@@ -1,0 +1,91 @@
+{% extends "dashboard-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Dashboard" %}{% endblock %}
+
+{% block section %}
+
+    {% if notifications %}
+    <div class="news">
+            <h2>{% trans 'News'%}</h2>
+            <ul>
+                {% for notif in notifications %}
+                <li>
+                {% autoescape off %}
+                {{notif.text}}
+                {% endautoescape %}
+                </li>
+                {% endfor %}
+            </ul>
+    </div>
+    {% endif %}
+
+    <div style="float: left; width: 49%;">
+        <div class="box">
+            <h2>{% trans 'Recent activity'%}</h2>
+            <ul class="activity tooltify">
+                {% for event in events %}
+                <li>
+                {% include "events/row-event.html"%}
+                </li>
+                {% empty %}
+                <div class="infobox">{% trans "There isn't any event yet. Vote something, add friends, add items to your wishlist or fave them!" %}</div>
+                {% endfor %}
+            </ul>
+            <hr/>
+            <div class="more"><a href="/events"> + {% trans 'View all events'%}</a></div>
+        </div>
+
+    </div>
+    <div style="float: right; width: 49%;">
+        <div>
+            <div id="soulmates">
+                <h2>{% trans 'Soulmates'%}</h2>
+                <ul class="userlist tooltify">
+                    {% for soulmate in soulmates %}
+                    <li>
+                    {% with soulmate|first as ouser %}
+                    {% with soulmate|last as score %}
+                    {% include "users/mini-lastest-user.html"%}
+                    {% endwith %}
+                    {% endwith %}
+                    </li>
+                    {% empty %}
+                    <div class="infobox">{% trans "You have not voted enough movies, so we can't calculate your soulmates" %}</div>
+                    {% endfor %}
+                </ul>
+            </div>
+            <hr/>
+            <div id="soulmates">
+                <h2>{% trans 'Your friends'%}</h2>
+                <ul class="userlist tooltify">
+                    {% for friend in friend_list %}
+                    <li>
+                    {% with friend as ouser %}{% include "users/mini-lastest-user.html"%}{% endwith %}
+                    </li>
+                    {% empty %}
+                    <div class="infobox">{% trans "You have not added any friend yet."%}</div>
+                    {% endfor %}
+                </ul>
+            </div>
+            <hr/>
+            <div class="more"><a href="/dashboard/friends"> + {% trans 'View all friends'%}</a></div>
+            <div id="lastestusers">
+                <h2>{% trans 'Latest users in Likees'%}</h2>
+                <ul class="userlist tooltify">
+                    {% for ouser in latestusers %}
+                    <li>
+                    {% include "users/mini-lastest-user.html"%}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+
+        </div>
+    </div>
+    
+{% endblock %}
+

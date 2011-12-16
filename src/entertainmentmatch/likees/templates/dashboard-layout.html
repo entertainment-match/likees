@@ -1,0 +1,28 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Dashboard" %}{% endblock %}
+
+{% block content %}
+
+<div>
+    <div id="submenu">
+        <ul id="subnavi">
+            <li><a {% if subsection = 'events'%}class="current"{% endif %} href="/events"><span>{% trans 'Recent activity' %}</span></a></li>
+            <li><a {% if subsection = 'lists'%}class="current"{% endif %} href="/dashboard/lists"><span>{% trans 'Lists' %}</span></a></li>
+            <li><a {% if subsection = 'friends'%}class="current"{% endif %} href="/dashboard/friends"><span>{% trans 'Friends' %}</span></a></li>
+            <li><a {% if subsection = 'soulmates'%}class="current"{% endif %} href="/dashboard/soulmates"><span>{% trans 'Soulmates' %}</span></a></li>
+            <li style="float:right"><a {% if subsection = 'profile'%}class="current"{% endif %} href="/accounts/profile"><span>{% trans 'Profile' %}</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- INI: dashboard -->
+<div class="dashboard">
+    {% block section %} {% endblock %}
+</div>
+<!-- END: dashboard -->
+
+{% endblock %}
+

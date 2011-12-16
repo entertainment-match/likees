@@ -1,0 +1,71 @@
+{% extends "dashboard-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Dashboard" %}{% endblock %}
+
+{% block section %}
+
+ <div class="lists" style="overflow: hidden;">
+        <div class="box">
+            <div class="left-box">
+                <h2>{% trans 'Your lists' %}</h2>
+            </div>
+            <div class="right-box" style="font-size: 15px;">
+                    {% trans 'Go to'%}:
+                    {% for mytag in mytags %}   
+                    {% ifnotequal mytag "wishlist" %}
+                    {% ifnotequal mytag "ignore" %}
+                    {% ifnotequal mytag "fave" %}
+                    <a href="#list-{{mytag}}">{{mytag}}</a>
+                    {% endifnotequal %}
+                    {% endifnotequal %}
+                    {% endifnotequal %}
+                    {% endfor %}
+                {% comment %}
+                <label for="sellist">
+                    {% trans 'Select one of your lists'%}:
+                <select name="list">
+                    {% for mytag in mytags %}   
+                    {% ifnotequal mytag "wishlist" %}
+                    {% ifnotequal mytag "ignore" %}
+                    {% ifnotequal mytag "fave" %}
+                    <option name="{{mytag}}">{{mytag}}</option>
+                    {% endifnotequal %}
+                    {% endifnotequal %}
+                    {% endifnotequal %}
+                    {% endfor %}
+                </select>
+                </label>
+                {% endcomment %}
+            </div>
+        </div>
+        {% for key, list in itemstag.items %}
+        {% ifnotequal key "wishlist" %}
+        {% ifnotequal key "ignore" %}
+        {% ifnotequal key "fave" %}
+
+        <div class="box">
+            <div class="left-box">
+                <h3 id="list-{{key}}">{{key}}</h3>
+            </div>
+            <div class="right-box">
+                Eliminar
+            </div>
+        </div>
+        
+        <div class="tablemoviesfull" style="overflow: hidden">
+            {% for item in list %}
+            {% include "items/poster-item.html"%}
+            {% empty %}
+            <span class="empty">{% trans 'You do not have any list yet' %}</span>
+            {% endfor %}
+        </div>
+        <hr/>
+        {% endifnotequal %}
+        {% endifnotequal %}
+        {% endifnotequal %}
+        {% endfor %}
+ </div>
+{% endblock %}
+

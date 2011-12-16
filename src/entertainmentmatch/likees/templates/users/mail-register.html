@@ -1,0 +1,22 @@
+{% extends "users/mail.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<p>
+{% blocktrans with user.username as username %}
+Welcome to Likees, <span class="username">{{username}}</span>. 
+{% endblocktrans %}
+</p>
+<p>
+{% blocktrans %}
+We hope you find useful this amazing site. 
+{% endblocktrans %}
+</p>
+<p>
+{% blocktrans %}
+Validate your registration with this link
+{% endblocktrans %}:
+</p>
+<p><a href="{{ link }}">{{ link }}</a></p>
+{% endblock %}

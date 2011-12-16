@@ -1,0 +1,61 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Catalog" %}{% endblock %}
+
+{% block content %}
+
+<div class="maindatacontainer">
+    <p style="margin: 10px 0px;">
+    	{% trans 'Search results'%}: <b>{{search}}</b>
+    </p>
+
+    <div class="tablemovies" style="float:left; width: 650px;">
+        <div style="overflow: hidden;">
+            <h3 style="float:left">{% trans 'Catalog'%}</h3>
+            {% if totalitems %}
+            <p style="float:right; line-height: 200%;"><b>{% trans 'Total movies found'%}: </b>{{totalitems}}</p>
+            {% endif %}
+        </div>
+		{% if movies.object_list == None or movies.object_list|length == 0 %}
+		<div class="infobox">
+		    <p>{% trans 'Sorry, we did not found anything' %} </p>
+		</div>
+		{% else %}
+
+        {% if movies.object_list %}
+
+        {% for item in movies.object_list %}
+        {% include "items/row-item.html"%}
+        {% endfor %}
+
+        {% with movies as list %}
+        {% with '/search/' as context %}
+        {% include "paginator.html"%}
+        {% endwith %}
+        {% endwith %}
+
+        {% endif %}
+		{% endif %}
+
+    </div>
+    <div class="tablepeople">
+        <div style="overflow: hidden;">
+            <h3 style="float:left">{% trans "People" %}</h3>
+		</div>
+        {% if people %}
+        {% for p in people %}
+        {% include "people/row-item.html"%}
+        {% endfor %}
+        <a href="/search/?type=people{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{key}}={{value}}{% endifnotequal %}{% endfor %}">{% trans 'View more' %}</a>
+        {% else %}
+        <div class="infobox">
+		    <p>{% trans 'No results'%}</p>
+		</div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+

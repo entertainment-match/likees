@@ -1,0 +1,42 @@
+{% extends "catalog-movies.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "I want to watch" %}{% endblock %}
+
+{% block contentcatalog %}
+
+    {% if section = 'wishlist'%}
+    <div class="infobox">
+        {% trans 'All movies in this section will be removed once they have voted or ruled out.'%}
+    </div>
+    {% endif %}
+
+    <div class="maindatacontainer">
+
+        <div class="tablemoviesfull">
+            <div style="overflow: hidden;">
+                <h3 style="float:left">{% trans 'I want to watch'%}</h3>
+                {% if totalitems %}
+                <p style="float:right; line-height: 200%"><b>{% trans 'Total movies found'%}: </b>{{totalitems}}</p>
+                {% endif %}
+            </div>
+            
+            {% for item in movies.object_list %}
+            {% include "items/row-item.html"%}
+            {% empty %}
+            <div class="empty">{% trans "You do not have any movie in your wishlist" %}</div>
+            {% endfor %}
+
+            {% with movies as list %}
+            {% with '/wishlist/' as context %}
+            {% include "paginator.html"%}
+            {% endwith %}
+            {% endwith %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+

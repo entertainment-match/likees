@@ -1,0 +1,41 @@
+{% extends "catalog-movies.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans "Last voted" %}{% endblock %}
+
+{% block contentcatalog %}
+
+    <div class="maindatacontainer">
+
+        {% if uservotes.object_list %}
+
+        <div class="tablemoviesfull">
+            <div style="overflow: hidden;">
+                <h3 style="float:left">{% trans 'Last voted' %}</h3>
+                {% if totalitems %}
+                <p style="float:right; line-height: 200%"><b>{% trans 'Total movies found'%}: </b>{{totalitems}}</p>
+                {% endif %}
+            </div>
+            
+            {% for vote in uservotes.object_list %}
+            {% with vote.item as item %}
+            {% include "items/row-item.html"%}
+            {% endwith %}
+            {% endfor %}
+
+            {% with uservotes as list %}
+            {% with '/votes/' as context %}
+            {% include "paginator.html"%}
+            {% endwith %}
+            {% endwith %}
+
+        </div>
+        
+        {% else %}
+        <div class="infobox">{% trans 'In this section you will find all those items you have voted in the past'%}</div>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

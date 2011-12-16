@@ -1,0 +1,12 @@
+{% load likeestags %}
+{% spaceless %}
+    <div class="rowitem">
+            {% if p.image %}
+            <a href="/person/{{ p.id }}/">
+            <img class="poster" alt="{{ p.image.name }}" src="{{COVER_DOMAIN}}{{p.image.url}}" style="height: 140px; width: 100px"/> 
+            </a>
+            {% endif %}
+            <a href="/person/{{ p.id }}/title/{{p.normalized_name}}/" class="title" style="font-weight: bold;">{{ p.name }}</a><span style="color: #444;"> ({{ p.name}})</span>
+    </div>
+{% endspaceless %}
+

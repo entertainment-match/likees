@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{LANGUAGE_CODE}}" lang="{{LANGUAGE_CODE}}">
+<head>
+    {% load i18n %}
+    <title>{% block title %}{% trans "appname" %}{% endblock %}</title>
+    
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="{{LANGUAGE_CODE}}"/>
+    <meta name="robots" content="index,follow"/>
+	{% block metas %}{% endblock %}
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" media="screen"/>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/likees.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery.ui.stars.css" media="screen"/> 
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui-1.8.6.custom.css" media="screen"/> 
+    <link rel="stylesheet" type="text/css" href="/static/css/colorbox.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/tipsy.css" media="screen"/>
+
+    <script type="text/javascript" src="/static/js/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui-1.8.6.custom.min.js"></script> 
+    <script type="text/javascript" src="/static/js/jquery.ui.stars.min.js"></script> 
+    <script type="text/javascript" src="/static/js/jquery.colorbox-min.js"></script> 
+    <script type="text/javascript" src="/static/js/jquery.jcarousel.min.js"></script> 
+    <script type="text/javascript" src="/static/js/jquery.form.js"></script> 
+    <script type="text/javascript" src="/static/js/jquery.tag-it.js"></script> 
+    <script type="text/javascript" src="/static/js/jquery.tipsy.js"></script> 
+    <script type="text/javascript" src="/static/js/likees.js"></script> 
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAmtFXgbJW77YUt61m9POf9xTKmMipFaMUcghX5GTCcTTsoYVSJxSaL63rOp5d2ghyp3IEWKfJs2Yxag"></script>
+    <script type="text/javascript" src="/dynjs/language.js"></script> 
+    
+    <script type="text/javascript">
+        google.load("language", "1");
+
+        $(document).ready(function(){        
+            FB.init({
+            appId  : '130241503711079',
+            status : true, // check login status
+            cookie : true, // enable cookies to allow the server to access the session
+            xfbml  : true  // parse XFBML
+            });
+            
+            initAll(document);
+        });
+    </script>
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-348478-6']);
+      _gaq.push(['_setDomainName', '.likees.org']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>    
+</head>
+{% load i18n %}
+<body>
+    <div id="header">
+        <div id="logo">
+            <div id="usermenu">
+                <ul id="usernavi">
+                    {% if user.is_authenticated %}
+                    <li><a id="account-logout" href="/accounts/logout/">{% trans 'Log out'%}</a></li>
+                    <li><a href="/dashboard/friends/">{% trans 'Your friends' %}</a></li>
+                    <li><a href="/dashboard/lists/">{% trans 'Your lists' %}</a></li>
+                    <li><a href="/wishlist/">{% trans 'I want to watch' %}</a><span id="iwhanttowatchcount">{{ request.session.num_wishlist }}</span></li>
+                        
+                    <li style="font-weight: bold; margin-left: 15px;">
+                    <a href="/accounts/profile/">
+                        {% if user.image.url %}
+                        <img class="avatar" src="{{ user.image.url }}" alt="{{user.username}}"/>
+                        {% else %}
+                        <img class="avatar" src="/static/img/gravatar.png" alt=""/>
+                        {% endif %}
+                    </a>
+                    <a href="/accounts/profile/">
+                        {{ user.username }}
+                    </a>
+                    </li>
+                    {% else %}
+                    <li>
+
+                    <form class="formlogin" method="post" action="{% url likees.views.views.login_user %}">
+                        {% csrf_token %}
+
+                        <div style="overflow: hidden; padding-top: 5px;">
+                        <div style="float:left; margin-right: 15px;">
+                            <label for="formlogin-username">{% trans 'Username or email'%}</label><br/>
+                            <input id="formlogin-username" type="text" name="username" maxlength="30" style="width: 120px;" />
+                        </div>
+                        <div style="float:left; margin-right: 15px;">
+                            <label for="formlogin-password">{% trans 'Password'%}</label><br/>
+                            <input id="formlogin-password" type="password" name="password" style="width: 120px;" />
+                        </div>
+                        <div style="float:left; display: table-cell; vertical-align: middle; height: 30px; padding-top: 5px;">
+                            <input id="formlogin-submit" type="submit" name="login" class="stdbutton default" value="{% trans 'Login'%}"/>
+                        </div>
+                        </div>
+
+                        <input type="hidden" name="next" value="{{ next }}" />
+                    </form>
+
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div id="menu">
+            <ul id="navi">
+                {% if user.is_authenticated %}
+                <li><a {% if section = 'dashboard'%}class="current"{% endif %}href="/dashboard/">{% trans "Dashboard" %}</a></li>
+                <li><a {% if section = 'tutorial'%}class="current"{% endif %}href="/tutorial/">{% trans "Getting started" %}</a></li>
+                {% else %}
+                <li><a {% if section = 'home'%}class="current"{% endif %}href="/home">{% trans 'Home'%}</a></li>
+                {% endif %}
+                <li><a {% if section = 'movies'%}class="current"{% endif %}href="/new/">{% trans 'Movies'%}</a></li>
+                <!--<li><a href="#">Libros</a></li>
+                <li><a href="#">Series</a></li>-->
+            </ul>
+            <div id="search">
+                <!--INI DYNAMIC: Buscador-->
+                <form method="get" action="/search" id="searchform">
+                    <label for="searchtext">
+                        <input type="text" name="search" id="searchtext" class="field" placeholder="{% trans 'Search movies, actors, ...'%}" />
+                        <img id="submitimg" src="/static/img/snow/Search.png" alt="{% trans 'Search'%}"/>
+                    </label>
+                </form>
+                <!--FIN DYNAMIC-->
+            </div>
+        </div>
+    </div>
+	
+    <div id="maincontainer">
+	    {% block content %}{% endblock %}
+    </div>
+
+    <div id="fb-root"></div>
+
+    <div id="promo">
+        <div class="wrap">            
+            <div id="footer">
+                <p style="float: left;">{% trans 'Copyright 2011 Likees. All Rights Reserved'%} &#183; <a class="lightbox" href="/contact/">{% trans 'Contact us'%}</a> &#183; <a class="lightbox" href="/about/">{% trans 'About us'%}</a> </p>
+                <p style="float: right;">{% trans 'Version'%}: {% include "version.html"%}</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

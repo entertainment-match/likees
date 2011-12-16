@@ -1,0 +1,20 @@
+{% extends "main-lightbox-layout.html" %}
+
+{% load i18n %}
+
+{% load likeestags %}
+
+{% block content %}
+
+<h2>{% trans 'About us'%}</h2>
+
+<div style="width: 500px; text-align: left;">
+    <p>{% trans 'Likees is a little big team from Barcelona (Spain), who pretends that you enjoy more watching films.' %}</p>
+    <p>{% trans 'This project could not be raal without the fantastic opensource database <a href="http://www.themoviedb.org/"><img src="http://cf1.themoviedb.org/images/tmdb-logo.png"/></a>.' %}</p>
+    <p>{% trans 'We have to give special thanks to the Django Opensource Community.'%}</p>
+    <p>{% trans 'Thanks to Wikipedia, Google Translate, Fam fam fam and Django Transmeta.'%}</p>
+
+    <p>{% trans 'If you consider that some of the info that we have is property of you, we would like to contct us and resolve this at: <a href="mailto:contact@likees.org">contact@likees.org</a>' %}</p>
+</div>
+
+{% endblock %}

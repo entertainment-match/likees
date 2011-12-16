@@ -1,0 +1,29 @@
+{% load likeestags %}
+
+{% load i18n %}
+
+<a href="/user/{{ouser.username}}/">
+    {% if ouser.image.url %}
+    <img class="avatar" src="{{ ouser.image.url }}" title="{{ouser.username}}"/>
+    {% else %}
+    <img class="avatar" src="/static/img/gravatar.png" title="{{ouser.username}}"/>
+    {% endif %}
+</a>
+
+<a href="/user/{{ouser.username}}/">
+    {{ouser.username}}
+</a>
+{% if score %}
+<br/>
+<span class="soulmateaffinity" style="color: #ccc;">
+    {% blocktrans with score as score %}
+    You have an affinity about {{score}}%
+    {% endblocktrans %}
+</span>
+{% endif %}
+
+{% if friends|lookup:ouser.id %}    
+<a class="friend-action" href="/friend/delete/{{ouser.username}}/" style="float:right;"><span>{% trans 'Remove from friends' %}</span></a>
+{%else%}
+<a class="friend-action" href="/friend/add/{{ouser.username}}/" style="float:right;"><span>{% trans 'Add to friends' %}</span></a>
+{% endif %}

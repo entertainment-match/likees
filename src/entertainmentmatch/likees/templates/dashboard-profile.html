@@ -1,0 +1,183 @@
+{% extends "dashboard-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {% trans 'User profile'%}{% endblock %}
+
+{% block section %}
+
+{% load likeestags %}
+
+{% spaceless %}
+<div class="main-profile">
+    
+    <h1>{{ user.username }}</h1>
+    
+    {% if updated %}
+    <div class="donebox">
+        {% trans 'Preferences saved' %}
+    </div>
+    {% endif %}
+
+    <div class="box">
+        <div class="left-box">
+            <div class="poster">
+                {% if user.image.url %}
+                <a class="lightbox" href="/accounts/profile/avatar/"><img class="avatar" src="{{ user.image.url }}" alt="{{user.username}}" /></a>
+                {% else %}
+                <a class="lightbox" href="/accounts/profile/avatar/"><img class="avatar" src="/static/img/gravatar.png" alt=""/></a>
+                {% endif %}
+                <div class="avataroverlap">
+                    {% trans 'Modify avatar'%}
+                </div>
+            </div> 
+        </div>
+        
+        <div class="right-box">
+            <form id="updateprofile" action="/accounts/update_profile/" method="get">
+            <dl class="itemdetails">
+                <dt>{%trans 'Name'%}:</dt>
+                <dd><input type="text" name="name" value="{{user.first_name}}"/></dd>
+
+                <dt>{%trans 'Surname'%}:</dt>
+                <dd><input type="text" name="surname" value="{{user.last_name}}"/></dd>
+
+                <dt>{%trans 'E-mail'%}:</dt>
+                <dd>{{user.email}}</dd>
+
+                <dt>{%trans 'Gender'%}:</dt>
+                <dd>
+                <select name="gender">
+                    <option value="male"{% if user.gender == 'male'%} selected="true"{% endif%}>{% trans 'male' %}</option>
+                    <option value="female"{% if user.gender == 'female'%} selected="true"{% endif%}>{% trans 'female' %}</option>
+                </select>
+                </dd>
+
+                <dt>{%trans 'Birthdate'%}:</dt>
+                <dd>
+                <input type="text" name="birthdate" class="datepicker" value="{{user.birthdate|date:'Y-m-d'}}" />
+                </dd>
+
+                <dt>{%trans 'Registered on'%}:</dt>
+                <dd>{{user.date_joined}} </dd>
+            </dl>
+            <div class="stdhtoolbar">
+                <a class="stdbutton default" href="#" id="btnsaveinfo">{% trans 'Save profile info'%}</a>
+            </div>
+
+            <script type="text/javascript">
+                $(document).ready(function(){        
+                        $("#btnsaveinfo").click(function(){
+                            $("#updateprofile").submit();
+                            });
+                        });
+</script>
+
+           </form>
+           <div class="facebook">
+               <h2>{% trans 'Connect with your Facebook account' %} </h2>
+               <p>{% trans 'Why you should do this? If you connect with your Facebook account, you will be able to:'%}</p>
+               <ul>
+                   <li>{% trans 'Import your profile and avatar' %} </li>
+                   <li>{% trans 'Find friends that use Likees on your Facebook contact list' %} </li>
+                   <li>{% trans "Publish in your Facebook's wall your Likees activity" %} </li>
+               </ul>
+
+               <p>{% trans 'Your current status:' %} {{request.session.preferences.facebook_id|yesno:"Successfully connected!,Not connected to Facebook"}} </p>
+
+               <fb:login-button autologoutlink="true" size="medium" background="white" length="short" onlogin="connectFacebook()" perms="user_about_me,user_birthday,read_friendlists,publish_stream"></fb:login-button>
+           </div>
+           <div class="profile-options">
+               <form id="updatesettings" action="/accounts/update_profile/" method="get">
+                   <h2>{% trans 'Preferences'%}</h2>
+                   <dl>
+                       {% with _('Language') as preftitle %}
+                       {% with _('Sets the Likees navegation language') as prefdesc %}
+                       {% with preferences.language as prefvalue %}
+                       {% with 'language' as prefname %}
+                       {% with languages as prefoptions %}
+                       {% include 'preferences/preference-select.html'%}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+
+                       {% with _('Time zone') as preftitle %}
+                       {% with _('Sets your time zone prefence') as prefdesc %}
+                       {% with preferences.timezone as prefvalue %}
+                       {% with 'timezone' as prefname %}
+                       {% with timezones as prefoptions %}
+                       {% include 'preferences/preference-select.html'%}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                   </dl>
+
+                   <h2>{% trans 'Privacy options'%}</h2>
+
+                   <dl>
+                       {% with _('Events') as preftitle %}
+                       {% with _('Post every event to my followers') as prefdesc %}
+                       {% with preferences.events as prefvalue %}
+                       {% with 'events' as prefname %}
+                       {% include 'preferences/preference-boolean.html'%}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+
+                       {% with _('Mail notifications') as preftitle %}
+                       {% with _('Get mail notifications') as prefdesc %}
+                       {% with preferences.mail as prefvalue %}
+                       {% with 'mail' as prefname %}
+                       {% include 'preferences/preference-boolean.html'%}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                   </dl>
+
+                   <h2>{% trans 'Facebook options'%}</h2>
+                   <dl>
+                       {% with _('Post votes to my Facebook wall') as prefdesc %}
+                       {% with preferences.facebook_post_votes as prefvalue %}
+                       {% with 'facebook_post_votes' as prefname %}
+                       {% include 'preferences/preference-boolean.html'%}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+
+                       {% with _('Post faves to my Facebook wall') as prefdesc %}
+                       {% with preferences.facebook_post_faves as prefvalue %}
+                       {% with 'facebook_post_faves' as prefname %}
+                       {% include 'preferences/preference-boolean.html'%}
+                       {% endwith %}
+                       {% endwith %}
+                       {% endwith %}
+                   </dl>
+                   <!--<input type="submit" value="Submit"/>-->
+               </form>
+           </div>
+
+           <div class="stdhtoolbar">
+               <a class="stdbutton default" href="#" id="btnsavepref">{% trans 'Save preferences'%}</a>
+               <a class="stdbutton" id="change-password" href="/accounts/change_password/">{% trans 'Change password'%}</a>
+               <!-- TODO <a class="stdbutton" href="#">{%trans 'Remove account'%}</a> -->
+           </div>
+
+           <script type="text/javascript">
+               $(document).ready(function(){        
+                       $("#btnsavepref").click(function(){
+                           $("#updatesettings").submit();
+                           });
+                       });
+            </script>
+       </div>
+
+    </div>
+</div>
+{% endspaceless %}
+{% endblock %}

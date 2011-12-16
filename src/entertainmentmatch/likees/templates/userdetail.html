@@ -1,0 +1,91 @@
+{% extends "main-layout.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "appname" %} - {{ouser.username}}{% endblock %}
+
+{% block content %}
+
+{% load likeestags %}
+
+{% spaceless %}
+
+<div class="main-user">
+    <h1>{{ ouser.username }}</h1>
+    <div class="box">
+        <div class="userposter">
+            <div class="poster" style="overflow: hidden;">
+                 {% if ouser.image.url %}
+                      <img class="avatar" src="{{ ouser.image.url }}"/>
+                 {% else %}
+                      <img class="avatar" src="/static/img/gravatar.png"/>
+                 {% endif %}
+            </div> 
+
+        </div>
+        <div class="userdesc">
+            <div class="stdhrtoolbar">
+                {% if user.is_authenticated %} 
+                {% ifnotequal ouser.id user.id %}
+                {% if friends|lookup:ouser.id %}    
+                <a class="stdbutton friend-action" href="/friend/delete/{{ouser.username}}/"><span>{% trans 'Remove from friends' %}</span></a>
+                {%else%}
+                <a class="stdbutton friend-action" href="/friend/add/{{ouser.username}}/"><span>{% trans 'Add to friends' %}</span></a>
+                {% endif %}
+                {% endifnotequal %}
+                {% endif %}
+            </div>
+            <div class="faves">
+                <h3>{% trans 'Favorite movies' %}</h3>
+
+                {% for key, fave in faves.items %}
+
+                {% with fave as item %}
+                {% with votes|lookup:item.id as rate %}
+                {% include "items/poster-item.html"%}
+                {% endwith %}
+                {% endwith %}
+
+                {% empty %}
+                <p class="empty">{% trans 'This user has choose any favourite film' %}</p>
+                {% endfor %}
+            </div>
+
+            <div class="votes">
+                <div class="box">
+                    <div class="left-box">
+                        <h3>{% trans 'Last movies voted'%}</h3>
+                    </div>
+                    <div class="right-box">
+                        {% trans 'Movies voted:' %} {{totalvoted}}
+                    </div>
+                </div>
+                
+                {% if uservotes.object_list %} 
+                
+                {% for vote in uservotes.object_list %}
+                
+                {% with vote.item as item %}
+                {% with vote.rate as rate %}
+                {% include "items/flat-row-item.html"%}
+                {% endwith %}
+                {% endwith %}
+                
+                {% endfor %}
+                
+                {% with uservotes as list %}
+                {% with searchcontext as context %}
+                {% include "paginator.html"%}
+                {% endwith %}
+                {% endwith %}
+
+                {% else %}
+                <p class="empty">{% trans 'This user has not voted any film' %}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>    
+
+{% endspaceless %}
+{% endblock %}

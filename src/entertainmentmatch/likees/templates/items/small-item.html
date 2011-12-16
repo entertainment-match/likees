@@ -1,0 +1,14 @@
+{% load likeestags %}
+{% spaceless %}
+        <div class="small-item"> 
+            {% if item.thumb %}
+            <img class="poster" alt="{{ item.name }}" src="{{item.thumb.url}}"/> 
+            {% endif %}
+            <div><a href="/likees/item/{{ item.id }}/" class="title">{{ item.name }}</a></div> 
+	        <em>{{ item.overview|slice:":100" }}...</em>
+            
+            {% if user.is_authenticated %}
+            <div class="rateme"><a href="/likees/item/{{item.id}}/vote/?test={{ votes|lookup:item.id }}" style="display: none;"></a></div>
+            {% endif %}
+        </div> 
+{% endspaceless %}

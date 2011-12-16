@@ -1,0 +1,29 @@
+{% load likeestags %}
+
+{% load i18n %}
+
+<div class="infotip">
+
+    <div class="box" style="margin-bottom:10px;">
+        <div class="left-box">
+            <p class="title">{{ouser.username}}</p>
+            <p>Votes: <b>432</b></p>
+        </div>
+        <div class="right-box">
+            {% if ouser.image.url %}
+            <img src="{{ ouser.image.url }}"/>
+            {% else %}
+            <img src="/static/img/gravatar.png"/>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="stdhrtoolbar">
+        {% if friends|lookup:ouser.id %}    
+        <a class="stdbutton friend-action" href="/friend/delete/{{ouser.username}}/"><span>{% trans 'Remove from friends' %}</span></a>
+        {%else%}
+        <a class="stdbutton friend-action" href="/friend/add/{{ouser.username}}/"><span>{% trans 'Add to friends' %}</span></a>
+        {% endif %}
+        <a class="stdbutton" href="/user/{{ouser.username}}/">View profile</a>
+    </div>
+</div>

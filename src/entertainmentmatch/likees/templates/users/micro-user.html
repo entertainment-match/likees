@@ -1,0 +1,5 @@
+{% load i18n %}
+
+<a href="/user/{{user.username}}/">
+    <img class="avatar" src="{% if user.image.url %}{{ user.image.url }}{% else %}/static/img/gravatar.png{% endif %}" title="{{user.username}}{% if vote %} ({{vote}}){% endif %}"/>
+</a>

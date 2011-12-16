@@ -1,0 +1,12 @@
+{% extends "users/mail.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<p>
+{% blocktrans %}
+<a href="http://www.likees.org/user/{{friend}}/">{{friend}}</a> has added you as a follower on Likees, <span class="username">{{username}}</span>. 
+{% endblocktrans %}
+</p>
+<p>
+{% endblock %}
